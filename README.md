@@ -2,4 +2,6 @@
 
 # Lista prac:
 1) Last Human 
-
+Wykorzystane Assety:
+* Standard Assets
+* TextMesh Pro
