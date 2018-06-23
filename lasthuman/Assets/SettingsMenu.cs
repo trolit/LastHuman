@@ -56,8 +56,16 @@ public class SettingsMenu : MonoBehaviour {
         QualitySettings.SetQualityLevel(qualityIndex);
     }
 
-    public void setFullscreen (bool isFullscreen)
+    public void setFullscreen (bool fullscreen)
     {
-        Screen.fullScreen = isFullscreen;
+        Screen.fullScreen = fullscreen;
+        if (Screen.fullScreen)
+        {
+            Screen.fullScreenMode = FullScreenMode.ExclusiveFullScreen;
+        }
+        else
+        {
+            Screen.fullScreenMode = FullScreenMode.Windowed;
+        }
     }
 }
