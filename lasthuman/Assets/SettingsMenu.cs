@@ -7,13 +7,30 @@ using UnityEngine.UI;
 public class SettingsMenu : MonoBehaviour {
 
     public AudioMixer audioMixer;
-
+    public Slider volSlider;
     public Dropdown resolutionDropdown;
+    public Dropdown graphicsDropdown;
 
     Resolution[] resolutions;
 
     void Start ()
     {
+        // ustaw na poczatku wartosci 
+
+        float volume = PlayerPrefs.GetFloat("volume");
+        int qualityIndex = PlayerPrefs.GetInt("quality");
+        int width_scr = PlayerPrefs.GetInt("width");
+        int height_scr = PlayerPrefs.GetInt("height");
+        Screen.SetResolution(width_scr, height_scr, Screen.fullScreen);
+
+        QualitySettings.SetQualityLevel(qualityIndex);
+        graphicsDropdown.value = qualityIndex;
+
+        audioMixer.SetFloat("volume", volume);
+        volSlider.value = volume;
+
+        // ------------------------
+
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -67,5 +84,13 @@ public class SettingsMenu : MonoBehaviour {
         {
             Screen.fullScreenMode = FullScreenMode.Windowed;
         }
+    }
+
+    public void saveButton()
+    {
+        PlayerPrefs.SetFloat("volume", volSlider.value);
+        PlayerPrefs.SetInt("quality", QualitySettings.GetQualityLevel());
+        PlayerPrefs.SetInt("width", Screen.currentResolution.width);
+        PlayerPrefs.SetInt("height", Screen.currentResolution.height);
     }
 }
