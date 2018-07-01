@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
 
     private bool facingRight;
     private bool attack;
+    private bool jumpattack;
 
     [SerializeField]
     private Transform[] groundpoints;
@@ -76,10 +77,18 @@ public class Player : MonoBehaviour {
 
     private void HandleAttacks()
     {
-        if(attack && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
+        if (attack && isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
         {
             myAnimator.SetTrigger("attack");
             myrigidBody.velocity = Vector2.zero;
+        }
+        if (jumpattack && !isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("jumpattack"))
+        {
+            myAnimator.SetBool("jumpattack", true);
+        }
+        if (!jumpattack && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("jumpattack"))
+        {
+            myAnimator.SetBool("jumpattack", false);
         }
     }
 
@@ -88,6 +97,7 @@ public class Player : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.F))
         {
             attack = true;
+            jumpattack = true;
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
@@ -111,6 +121,7 @@ public class Player : MonoBehaviour {
     {
         attack = false;
         Jump = false;
+        jumpattack = false;
     }
 
     private bool isgrounded()
