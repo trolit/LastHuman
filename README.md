@@ -3,6 +3,10 @@
 # Lista prac:
 1) Last Human 
 
-#### Wykorzystane Assety:
-* Standard Assets
-* TextMesh Pro
+wersja 0.0001 (w trakcie budowy)
+
+
+(widok menu moze ulec zmianie)
+
+
+![alt text](https://image.ibb.co/d9qSCJ/screen1.png)
