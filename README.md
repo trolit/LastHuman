@@ -5,7 +5,6 @@
 
 wersja 0.0001 (w trakcie budowy)
 
-
 (widok menu moze ulec zmianie)
 
 
