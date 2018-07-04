@@ -10,6 +10,8 @@ public class SettingsMenu : MonoBehaviour {
     public Slider volSlider;
     public Dropdown resolutionDropdown;
     public Dropdown graphicsDropdown;
+    public Dropdown antialiasingDropdown;
+    public Dropdown textureQualityDropdown;
 
     Resolution[] resolutions;
 
@@ -71,6 +73,15 @@ public class SettingsMenu : MonoBehaviour {
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+        /*
+        problem z tym fragmentem jest taki, ze jak wybieramy opcje grafiki np. 
+        medium i potem wybierzemy high to nie znika symbol "V" obok...
+        antialiasingDropdown.value = (int)QualitySettings.antiAliasing - 1;
+        antialiasingDropdown.RefreshShownValue();
+        textureQualityDropdown.value = (int)QualitySettings.masterTextureLimit;
+        textureQualityDropdown.RefreshShownValue();
+        graphicsDropdown.RefreshShownValue();
+        */
     }
 
     public void setFullscreen (bool fullscreen)
@@ -86,11 +97,63 @@ public class SettingsMenu : MonoBehaviour {
         }
     }
 
+    public void setVsync (bool vsync)
+    {
+        if (vsync)
+        {
+            QualitySettings.vSyncCount = 1;
+        }
+        else
+        {
+            QualitySettings.vSyncCount = 0;
+        }
+    }
+
+    public void setAntialiasing (int setaa)
+    {
+        if (setaa == 0)
+        {
+            QualitySettings.antiAliasing = 0;
+        }
+        else if(setaa == 1)
+        {
+            QualitySettings.antiAliasing = 2;
+        }
+        else if (setaa == 2)
+        {
+            QualitySettings.antiAliasing = 4;
+        }
+        else if (setaa == 3)
+        {
+            QualitySettings.antiAliasing = 8;
+        }
+    }
+    public void setTexQuality (int textq)
+    {
+        if(textq == 0)
+        {
+            QualitySettings.masterTextureLimit = 0;
+        }
+        else if(textq == 1)
+        {
+            QualitySettings.masterTextureLimit = 1;
+        }
+        else if (textq == 2)
+        {
+            QualitySettings.masterTextureLimit = 2;
+        }
+        else if (textq == 3)
+        {
+            QualitySettings.masterTextureLimit = 3;
+        }
+    }
+
     public void saveButton()
     {
         PlayerPrefs.SetFloat("volume", volSlider.value);
         PlayerPrefs.SetInt("quality", QualitySettings.GetQualityLevel());
         PlayerPrefs.SetInt("width", Screen.currentResolution.width);
         PlayerPrefs.SetInt("height", Screen.currentResolution.height);
+        PlayerPrefs.SetInt("vsync", QualitySettings.vSyncCount);
     }
 }
