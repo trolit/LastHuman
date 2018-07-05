@@ -17,6 +17,8 @@ public class SettingsMenu : MonoBehaviour {
 
     void Start ()
     {
+        useGUILayout = false;
+
         // ustaw na poczatku wartosci 
 
         float volume = PlayerPrefs.GetFloat("volume");

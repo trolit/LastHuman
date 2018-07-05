@@ -9,15 +9,11 @@ public class LoadMenu : MonoBehaviour
     public GameObject loadingScreen;
     public Slider slider;
     public Text progresstext;
-    public float timer = 1.5f;
 
-    void Update()
+    void Start()
     {
-        timer -= Time.deltaTime;
-        if(timer <= 0)
-        {
-            StartCoroutine(LoadAsynchronously());
-        }
+        // fix fix fix
+        StartCoroutine(LoadAsynchronously());
     }
 
     IEnumerator LoadAsynchronously()
