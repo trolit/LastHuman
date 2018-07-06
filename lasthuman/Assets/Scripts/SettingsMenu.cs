@@ -12,6 +12,7 @@ public class SettingsMenu : MonoBehaviour {
     public Dropdown graphicsDropdown;
     public Dropdown antialiasingDropdown;
     public Dropdown textureQualityDropdown;
+    public Toggle vsynctoggle;
 
     Resolution[] resolutions;
 
@@ -78,12 +79,22 @@ public class SettingsMenu : MonoBehaviour {
         /*
         problem z tym fragmentem jest taki, ze jak wybieramy opcje grafiki np. 
         medium i potem wybierzemy high to nie znika symbol "V" obok...
+        */
+
+        // komentarz(6 lipca 18) - o, dziala teraz normalnie :D
         antialiasingDropdown.value = (int)QualitySettings.antiAliasing - 1;
         antialiasingDropdown.RefreshShownValue();
         textureQualityDropdown.value = (int)QualitySettings.masterTextureLimit;
         textureQualityDropdown.RefreshShownValue();
         graphicsDropdown.RefreshShownValue();
-        */
+        if(QualitySettings.vSyncCount > 0)
+        {
+            vsynctoggle.isOn = true;
+        }
+        else if(QualitySettings.vSyncCount == 0)
+        {
+            vsynctoggle.isOn = false;
+        }
     }
 
     public void setFullscreen (bool fullscreen)

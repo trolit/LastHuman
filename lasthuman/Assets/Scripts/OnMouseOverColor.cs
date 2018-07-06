@@ -17,7 +17,8 @@ public class OnMouseOverColor : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        t.color = Color.cyan;
+        t.color = new Color(0f, 180f, 255f);
+        // t.color = Color.cyan;
     }
 
     public void OnPointerExit(PointerEventData eventData)

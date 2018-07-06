@@ -7,4 +7,4 @@ wersja 0.0001 (w trakcie budowy)
 (widok menu moze ulec zmianie)
 
 
-![alt text](https://image.ibb.co/d9qSCJ/screen1.png)
+![alt text](https://preview.ibb.co/fumrxJ/main_Theme.png)
