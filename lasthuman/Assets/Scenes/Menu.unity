@@ -2853,6 +2853,7 @@ GameObject:
   - component: {fileID: 557965504}
   - component: {fileID: 557965506}
   - component: {fileID: 557965505}
+  - component: {fileID: 557965507}
   m_Layer: 5
   m_Name: DArrowUP_text
   m_TagString: Untagged
@@ -2917,6 +2918,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 557965503}
+--- !u!114 &557965507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 557965503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7172bebedab34594b337b9dcc4158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 1279362447}
 --- !u!1 &603450204
 GameObject:
   m_ObjectHideFlags: 0
@@ -3367,7 +3380,7 @@ Prefab:
     - target: {fileID: 224614859366291874, guid: 3a920e15e2a1f5746b6ad81d1dac34f3,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -46.6
+      value: -46.600006
       objectReference: {fileID: 0}
     - target: {fileID: 224614859366291874, guid: 3a920e15e2a1f5746b6ad81d1dac34f3,
         type: 2}
@@ -5171,6 +5184,7 @@ GameObject:
   - component: {fileID: 1140154739}
   - component: {fileID: 1140154741}
   - component: {fileID: 1140154740}
+  - component: {fileID: 1140154742}
   m_Layer: 5
   m_Name: FAttack_text
   m_TagString: Untagged
@@ -5235,6 +5249,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1140154738}
+--- !u!114 &1140154742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1140154738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7172bebedab34594b337b9dcc4158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 1279233052}
 --- !u!1 &1145468412
 GameObject:
   m_ObjectHideFlags: 0
@@ -18719,6 +18745,7 @@ GameObject:
   - component: {fileID: 1929058282}
   - component: {fileID: 1929058284}
   - component: {fileID: 1929058283}
+  - component: {fileID: 1929058285}
   m_Layer: 5
   m_Name: Space_text
   m_TagString: Untagged
@@ -18783,6 +18810,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1929058281}
+--- !u!114 &1929058285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1929058281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7172bebedab34594b337b9dcc4158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 2043600547}
 --- !u!1 &1931115082
 GameObject:
   m_ObjectHideFlags: 0
@@ -18793,6 +18832,7 @@ GameObject:
   - component: {fileID: 1931115083}
   - component: {fileID: 1931115085}
   - component: {fileID: 1931115084}
+  - component: {fileID: 1931115086}
   m_Layer: 5
   m_Name: AArrowLEFT_text
   m_TagString: Untagged
@@ -18857,6 +18897,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1931115082}
+--- !u!114 &1931115086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1931115082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fee7172bebedab34594b337b9dcc4158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  t: {fileID: 1545717005}
 --- !u!1 &1948798927
 GameObject:
   m_ObjectHideFlags: 0
@@ -19439,7 +19491,7 @@ Prefab:
     - target: {fileID: 224528097236573654, guid: 04ca63a640e5e23479077d273fc29ac1,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -51.9
+      value: -51.899994
       objectReference: {fileID: 0}
     - target: {fileID: 224528097236573654, guid: 04ca63a640e5e23479077d273fc29ac1,
         type: 2}
