@@ -456,7 +456,6 @@ MonoBehaviour:
   loadingScreen: {fileID: 1135373583}
   slider: {fileID: 1135373582}
   progresstext: {fileID: 1135373581}
-  timer: 1.5
 --- !u!1 &680091039
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,7 +712,7 @@ Prefab:
     - target: {fileID: 224174268802468706, guid: bd7757322cf972542bfe879e0b52270f,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 224174268802468706, guid: bd7757322cf972542bfe879e0b52270f,
         type: 2}
@@ -758,7 +757,7 @@ Prefab:
     - target: {fileID: 224854868854239176, guid: bd7757322cf972542bfe879e0b52270f,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -62.8
+      value: -62.800003
       objectReference: {fileID: 0}
     - target: {fileID: 224854868854239176, guid: bd7757322cf972542bfe879e0b52270f,
         type: 2}
@@ -768,7 +767,7 @@ Prefab:
     - target: {fileID: 224174268802468706, guid: bd7757322cf972542bfe879e0b52270f,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 32.78
+      value: 32.8
       objectReference: {fileID: 0}
     - target: {fileID: 1088113493849360, guid: bd7757322cf972542bfe879e0b52270f, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -834,6 +833,11 @@ Prefab:
         type: 2}
       propertyPath: m_FontData.m_FontSize
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 224174268802468706, guid: bd7757322cf972542bfe879e0b52270f,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 533.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bd7757322cf972542bfe879e0b52270f, type: 2}
