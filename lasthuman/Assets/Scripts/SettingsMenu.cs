@@ -35,7 +35,8 @@ public class SettingsMenu : MonoBehaviour {
         volSlider.value = volume;
 
         // ------------------------
-
+        // Setting up resolution options
+        // ------------------------
         resolutions = Screen.resolutions;
 
         resolutionDropdown.ClearOptions();
@@ -121,7 +122,6 @@ public class SettingsMenu : MonoBehaviour {
             QualitySettings.vSyncCount = 0;
         }
     }
-
     public void setAntialiasing (int setaa)
     {
         if (setaa == 0)

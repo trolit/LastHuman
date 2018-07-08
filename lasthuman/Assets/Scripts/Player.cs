@@ -94,12 +94,12 @@ public class Player : MonoBehaviour {
 
     private void HandleInput()
     {
-        if(Input.GetKeyDown(KeyCode.F))
+        if(GameInputManager.GetKeyDown("Attack"))
         {
             attack = true;
             jumpattack = true;
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if(GameInputManager.GetKeyDown("Jump"))
         {
             Jump = true;
         }
