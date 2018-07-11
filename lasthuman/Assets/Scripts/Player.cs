@@ -4,14 +4,31 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
-    private Rigidbody2D myrigidBody;
+    private static Player instance;
+
+    // player singleton
+    public static Player Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<Player>();
+            }
+            return instance;
+        }
+    }
+
     private Animator myAnimator;
 
     [SerializeField]
     private float movementSpeed;
 
     private bool facingRight;
-    private bool attack;
+
+    public Rigidbody2D myrigidBody;
+
+    public bool attack;
     private bool jumpattack;
 
     [SerializeField]
@@ -23,8 +40,8 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private LayerMask whatIsGround;
 
-    private bool isGrounded;
-    private bool Jump;
+    public bool isGrounded;
+    public bool Jump;
     [SerializeField]
     private bool aircontrol;
 
@@ -86,7 +103,8 @@ public class Player : MonoBehaviour {
         {
             // myAnimator.SetBool("jumpattack", true);
             // instead of bool, trigger fixed double animation problem
-            myAnimator.SetTrigger("jumpattack_trigger");
+            myAnimator.SetBool("jumpattack", true);
+
         }
         if (!jumpattack && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("jumpattack"))
         {

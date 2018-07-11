@@ -16,5 +16,5 @@ przy jednym kliknięciu powoduje stały ruch, nie możemy się zatrzymać.
 - ~~wykorzystując koncepcję poruszania postaci z poradnika od InScopeStudios czasem poruszając
 się w jedną stronę następuje zatrzymanie postaci(nie może dalej się ruszać), aby temu zaradzić trzeba w przeciwną stronę
 się poruszyć.~~ 
-- ~~ przycisku po kliknięciu zostawia kolor kliknięcia ~~
-- ~~ przy wykonaniu ataku w skoku pojawia się podwójna animacja ~~
+- ~~przycisku po kliknięciu zostawia kolor kliknięcia~~
+- ~~przy wykonaniu ataku w skoku pojawia się podwójna animacja~~
