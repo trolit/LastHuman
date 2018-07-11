@@ -8,6 +8,7 @@ public class ShowText : MonoBehaviour
     public void DisplayText()
     {
         displayText.text = "SETTINGS SAVED!";
+        // run HideText function after 1.5 seconds
         Invoke("HideText", 1.5f);
     }
 

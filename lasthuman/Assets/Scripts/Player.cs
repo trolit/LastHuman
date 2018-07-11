@@ -84,7 +84,9 @@ public class Player : MonoBehaviour {
         }
         if (jumpattack && !isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("jumpattack"))
         {
-            myAnimator.SetBool("jumpattack", true);
+            // myAnimator.SetBool("jumpattack", true);
+            // instead of bool, trigger fixed double animation problem
+            myAnimator.SetTrigger("jumpattack_trigger");
         }
         if (!jumpattack && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("jumpattack"))
         {
@@ -94,7 +96,7 @@ public class Player : MonoBehaviour {
 
     private void HandleInput()
     {
-        if(GameInputManager.GetKeyDown("Attack"))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             attack = true;
             jumpattack = true;

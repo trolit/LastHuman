@@ -6,33 +6,46 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour {
 
-    public AudioMixer audioMixer;
-    public Slider volSlider;
+    // dropdowns here
     public Dropdown resolutionDropdown;
     public Dropdown graphicsDropdown;
     public Dropdown antialiasingDropdown;
     public Dropdown textureQualityDropdown;
+
+    // toggles here
     public Toggle vsynctoggle;
 
+    // variables here
+    int antialiasing = PlayerPrefs.GetInt("ant_a");
+
+    // arrays here
     Resolution[] resolutions;
 
     void Start ()
     {
+        // fix?
         useGUILayout = false;
 
-        // ustaw na poczatku wartosci 
-
-        float volume = PlayerPrefs.GetFloat("volume");
+        // loading parameters...
         int qualityIndex = PlayerPrefs.GetInt("quality");
         int width_scr = PlayerPrefs.GetInt("width");
         int height_scr = PlayerPrefs.GetInt("height");
+        int texture_quality = PlayerPrefs.GetInt("text_q");
+
+        // load screen resolution
         Screen.SetResolution(width_scr, height_scr, Screen.fullScreen);
 
+        // load quality level
         QualitySettings.SetQualityLevel(qualityIndex);
         graphicsDropdown.value = qualityIndex;
 
-        audioMixer.SetFloat("volume", volume);
-        volSlider.value = volume;
+        // load antialiasing 
+        QualitySettings.antiAliasing = antialiasing;
+        SetAntiAliasingDropdown();
+
+        // load texture quality
+        QualitySettings.masterTextureLimit = texture_quality;
+        textureQualityDropdown.value = texture_quality;
 
         // ------------------------
         // Setting up resolution options
@@ -68,12 +81,6 @@ public class SettingsMenu : MonoBehaviour {
         Resolution resolution = resolutions[resolutionIndex];
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
-
-    public void SetVolume(float volume)
-    {
-        audioMixer.SetFloat("volume", volume);
-    }
-
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
@@ -97,7 +104,6 @@ public class SettingsMenu : MonoBehaviour {
             vsynctoggle.isOn = false;
         }
     }
-
     public void setFullscreen (bool fullscreen)
     {
         Screen.fullScreen = fullscreen;
@@ -110,7 +116,6 @@ public class SettingsMenu : MonoBehaviour {
             Screen.fullScreenMode = FullScreenMode.Windowed;
         }
     }
-
     public void setVsync (bool vsync)
     {
         if (vsync)
@@ -160,13 +165,35 @@ public class SettingsMenu : MonoBehaviour {
             QualitySettings.masterTextureLimit = 3;
         }
     }
+    void SetAntiAliasingDropdown()
+    {
+        if (antialiasing == 0)
+        {
+            antialiasingDropdown.value = 0;
+        }
+        else if (antialiasing == 2)
+        {
+            antialiasingDropdown.value = 1;
+        }
+        else if (antialiasing == 4)
+        {
+            antialiasingDropdown.value = 2;
+        }
+        else if (antialiasing == 8)
+        {
+            antialiasingDropdown.value = 3;
+        }
+    }
 
     public void saveButton()
     {
-        PlayerPrefs.SetFloat("volume", volSlider.value);
         PlayerPrefs.SetInt("quality", QualitySettings.GetQualityLevel());
         PlayerPrefs.SetInt("width", Screen.currentResolution.width);
         PlayerPrefs.SetInt("height", Screen.currentResolution.height);
-        PlayerPrefs.SetInt("vsync", QualitySettings.vSyncCount);
+        PlayerPrefs.SetInt("ant_a", QualitySettings.antiAliasing);
+        PlayerPrefs.SetInt("text_q", QualitySettings.masterTextureLimit);
+
+        // will not probably save vsync parameter
+        // PlayerPrefs.SetInt("vsync", QualitySettings.vSyncCount);
     }
 }
