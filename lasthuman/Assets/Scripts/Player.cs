@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
 
+    // variables start with small letter
     private static Player instance;
 
     // player singleton
@@ -26,11 +27,6 @@ public class Player : MonoBehaviour {
 
     private bool facingRight;
 
-    public Rigidbody2D myrigidBody;
-
-    public bool attack;
-    private bool jumpattack;
-
     [SerializeField]
     private Transform[] groundpoints;
 
@@ -40,19 +36,23 @@ public class Player : MonoBehaviour {
     [SerializeField]
     private LayerMask whatIsGround;
 
-    public bool isGrounded;
-    public bool Jump;
     [SerializeField]
     private bool aircontrol;
 
     [SerializeField]
     private float JumpForce;
 
+    public Rigidbody2D MyRigidbody { get; set; }
+    public bool Attack { get; set; }
+    public bool Jump { get; set; }
+    public bool OnGround { get; set; }
+    // properties start with capital letter!
+    
 
     // Use this for initialization
     void Start () {
         facingRight = true;
-        myrigidBody = GetComponent<Rigidbody2D>();
+        MyRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
     }
 
@@ -63,65 +63,42 @@ public class Player : MonoBehaviour {
 
 	void FixedUpdate () {
         float horizontal = Input.GetAxis("Horizontal");
-        isGrounded = isgrounded();
+        OnGround = IsGrounded();
 
         HandleMovement(horizontal);
         Flip(horizontal);
-        HandleAttacks();
         HandleLayers();
-        ResetValues();
 	}
 
     private void HandleMovement(float horizontal)
     {
-        if (myrigidBody.velocity.y < 0 )
+        if(MyRigidbody.velocity.y < 0)
         {
             myAnimator.SetBool("land", true);
         }
-        if (isGrounded && Jump == true)
+
+        if(!Attack && (OnGround || aircontrol))
         {
-            isGrounded = false;
-            myrigidBody.AddForce(new Vector2(0, JumpForce));
-            myAnimator.SetTrigger("jump");
+            MyRigidbody.velocity = new Vector2(horizontal * movementSpeed, MyRigidbody.velocity.y);
         }
-        if (!this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack") && (isGrounded || aircontrol))
+
+        if(Jump && MyRigidbody.velocity.y == 0)
         {
-            myrigidBody.velocity = new Vector2(horizontal * movementSpeed, myrigidBody.velocity.y);
+            MyRigidbody.AddForce(new Vector2(0, JumpForce));
         }
 
         myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
-    }
-
-    private void HandleAttacks()
-    {
-        if (attack && isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(0).IsTag("Attack"))
-        {
-            myAnimator.SetTrigger("attack");
-            myrigidBody.velocity = Vector2.zero;
-        }
-        if (jumpattack && !isGrounded && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("jumpattack"))
-        {
-            // myAnimator.SetBool("jumpattack", true);
-            // instead of bool, trigger fixed double animation problem
-            myAnimator.SetBool("jumpattack", true);
-
-        }
-        if (!jumpattack && !this.myAnimator.GetCurrentAnimatorStateInfo(1).IsName("jumpattack"))
-        {
-            myAnimator.SetBool("jumpattack", false);
-        }
     }
 
     private void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            attack = true;
-            jumpattack = true;
+            myAnimator.SetTrigger("attack");
         }
-        if(GameInputManager.GetKeyDown("Jump"))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            Jump = true;
+            myAnimator.SetTrigger("jump");
         }
     }
 
@@ -136,17 +113,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    // reset values
-    private void ResetValues()
+    private bool IsGrounded()
     {
-        attack = false;
-        Jump = false;
-        jumpattack = false;
-    }
-
-    private bool isgrounded()
-    {
-        if (myrigidBody.velocity.y <= 0)
+        if (MyRigidbody.velocity.y <= 0)
         {
             foreach (Transform point in groundpoints)
             {
@@ -156,8 +125,6 @@ public class Player : MonoBehaviour {
                 {
                     if (colliders[i].gameObject != gameObject)
                     {
-                        myAnimator.ResetTrigger("jump");
-                        myAnimator.SetBool("land", false);
                         return true;
                     }
                 }
@@ -168,7 +135,7 @@ public class Player : MonoBehaviour {
 
     private void HandleLayers()
     {
-        if (!isGrounded)
+        if (!OnGround)
         {
             myAnimator.SetLayerWeight(1, 1);
         }
