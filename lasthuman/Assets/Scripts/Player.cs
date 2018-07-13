@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class Player : Character {
 
     // variables start with small letter
     private static Player instance;
@@ -20,12 +20,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private Animator myAnimator;
 
-    [SerializeField]
-    private float movementSpeed;
 
-    private bool facingRight;
+
 
     [SerializeField]
     private Transform[] groundpoints;
@@ -43,17 +40,22 @@ public class Player : MonoBehaviour {
     private float JumpForce;
 
     public Rigidbody2D MyRigidbody { get; set; }
-    public bool Attack { get; set; }
+    
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
-    // properties start with capital letter!
-    
+    // properties start with capital letter!!!
+
+    private Vector2 startPos;
 
     // Use this for initialization
-    void Start () {
-        facingRight = true;
+    public override void Start ()
+    {
+        // call Start function from Character
+        base.Start();
+
+        startPos = transform.position;
         MyRigidbody = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -106,10 +108,7 @@ public class Player : MonoBehaviour {
     {
         if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
-            facingRight = !facingRight;
-            Vector3 theScale = transform.localScale;
-            theScale.x *= -1;
-            transform.localScale = theScale;
+            ChangeDirection();
         }
     }
 
