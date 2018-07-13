@@ -11,6 +11,9 @@ public class IgnoreCollision : MonoBehaviour {
 	private void Awake ()
     {
         // Ignore collision with other object which has Collider
+        // the other object will be our Player of course
+        // and put this script on Enemy
+
         Physics2D.IgnoreCollision(GetComponent<Collider2D>(), other, true);
 
 	}

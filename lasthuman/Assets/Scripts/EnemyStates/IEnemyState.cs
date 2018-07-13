@@ -9,3 +9,6 @@ public interface IEnemyState
     void Exit();
     void OnTriggerEnter(Collider2D other);
 }
+
+// to resolve problems had to add "public" modifier to 
+// interface
