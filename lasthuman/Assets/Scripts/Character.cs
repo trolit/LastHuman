@@ -4,8 +4,6 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour {
 
-    protected Animator myAnimator;
-
     [SerializeField]
     protected float movementSpeed;
 
@@ -13,11 +11,13 @@ public abstract class Character : MonoBehaviour {
 
     public bool Attack { get; set; }
 
+    public Animator MyAnimator { get; private set; }
+
     // Use this for initialization
     public virtual void Start ()
     {
         facingRight = true;
-        myAnimator = GetComponent<Animator>();
+        MyAnimator = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame

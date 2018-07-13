@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-interface IEnemyState
+public interface IEnemyState
 {
     void Execute();
     void Enter(Enemy enemy);

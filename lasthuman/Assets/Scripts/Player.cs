@@ -20,10 +20,6 @@ public class Player : Character {
         }
     }
 
-
-
-
-
     [SerializeField]
     private Transform[] groundpoints;
 
@@ -76,7 +72,7 @@ public class Player : Character {
     {
         if(MyRigidbody.velocity.y < 0)
         {
-            myAnimator.SetBool("land", true);
+            MyAnimator.SetBool("land", true);
         }
 
         if(!Attack && (OnGround || aircontrol))
@@ -89,18 +85,18 @@ public class Player : Character {
             MyRigidbody.AddForce(new Vector2(0, JumpForce));
         }
 
-        myAnimator.SetFloat("speed", Mathf.Abs(horizontal));
+        MyAnimator.SetFloat("speed", Mathf.Abs(horizontal));
     }
 
     private void HandleInput()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            myAnimator.SetTrigger("attack");
+            MyAnimator.SetTrigger("attack");
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            myAnimator.SetTrigger("jump");
+            MyAnimator.SetTrigger("jump");
         }
     }
 
@@ -136,11 +132,11 @@ public class Player : Character {
     {
         if (!OnGround)
         {
-            myAnimator.SetLayerWeight(1, 1);
+            MyAnimator.SetLayerWeight(1, 1);
         }
         else
         {
-            myAnimator.SetLayerWeight(1, 0);
+            MyAnimator.SetLayerWeight(1, 0);
         }
     }
 }

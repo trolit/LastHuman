@@ -18,3 +18,15 @@ się w jedną stronę następuje zatrzymanie postaci(nie może dalej się rusza�
 się poruszyć.~~ 
 - ~~przycisku po kliknięciu zostawia kolor kliknięcia~~
 - ~~przy wykonaniu ataku w skoku pojawia się podwójna animacja~~
+
+
+
+#### Warto zajrzeć jeżeli ktoś chce rozpocząć przygodę z Unity:####
+
+Brackeys:
+
+> https://www.youtube.com/user/Brackeys/videos
+
+InScopeStudios:
+
+> https://www.youtube.com/user/KnnthRA/videos
