@@ -27,3 +27,7 @@ Brackeys:
 InScopeStudios:
 
 > https://www.youtube.com/user/KnnthRA/videos
+
+Sykoo:
+
+> https://www.youtube.com/user/SykooTV/videos

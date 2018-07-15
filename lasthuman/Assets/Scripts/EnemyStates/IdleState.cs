@@ -18,7 +18,7 @@ public class IdleState : IEnemyState
 
     public void Execute()
     {
-        // Idle();
+        Idle();
     }
 
     public void Exit()

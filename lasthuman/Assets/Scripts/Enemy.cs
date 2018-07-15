@@ -40,7 +40,7 @@ public class Enemy : Character
         // to avoid sliding
         MyAnimator.SetFloat("speed", 1);
 
-        transform.Translate( GetDirection() * (movementSpeed * Time.deltaTime) );
+        transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
     }
 
     public Vector2 GetDirection()
