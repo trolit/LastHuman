@@ -5,6 +5,7 @@ using UnityEngine;
 public class MeleeState : IEnemyState
 {
     private float attackTimer;
+    // how long till next attack
     private float attackCooldown = 3;
     private bool canAttack = true;
     
@@ -44,14 +45,17 @@ public class MeleeState : IEnemyState
 
     private void Attack()
     {
+        // turn on time...
         attackTimer += Time.deltaTime;
 
+        // if time reached 3 can attack and zeroing timer
         if (attackTimer >= attackCooldown)
         {
             canAttack = true;
             attackTimer = 0;
         }
 
+        // if cant attack is true perform animation and set can attack to false
         if (canAttack)
         {
             canAttack = false;

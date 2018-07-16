@@ -7,7 +7,7 @@ public class Enemy : Character
     // variable to watch state
     private IEnemyState currentState;
 
-    // property
+    // property Target to set enemy Target
     public GameObject Target { get; set; }
 
     [SerializeField]
