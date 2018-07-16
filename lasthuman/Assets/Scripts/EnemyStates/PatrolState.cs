@@ -15,7 +15,18 @@ public class PatrolState : IEnemyState
 
     public void Execute()
     {
+        Patrol();
+
         enemy.Move();
+
+        if(enemy.Target != null)
+        {
+            enemy.ChangeState(new MeleeState());
+        }
+        else
+        {
+            enemy.ChangeState(new IdleState());
+        }
     }
 
     public void Exit()
@@ -25,7 +36,10 @@ public class PatrolState : IEnemyState
 
     public void OnTriggerEnter(Collider2D other)
     {
-
+        if(other.tag == "Edge")
+        {
+            enemy.ChangeDirection();
+        }
     }
 
     private void Patrol()

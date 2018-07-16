@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MeleeState : IEnemyState
 {
+    // reference to enemy
+    private Enemy enemy;
+
     public void Enter(Enemy enemy)
     {
         
@@ -11,7 +14,10 @@ public class MeleeState : IEnemyState
 
     public void Execute()
     {
-       
+        if (enemy.Target != null)
+        {
+            enemy.Move();
+        }
     }
 
     public void Exit()
