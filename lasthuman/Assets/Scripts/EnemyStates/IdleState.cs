@@ -21,6 +21,7 @@ public class IdleState : IEnemyState
         Idle();
 
         // if enemy got target
+        // start running
         if (enemy.Target != null)
         {
             enemy.ChangeState(new PatrolState());

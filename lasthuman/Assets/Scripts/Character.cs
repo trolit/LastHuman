@@ -30,7 +30,7 @@ public abstract class Character : MonoBehaviour {
     {
         facingRight = !facingRight;
         // does the same as the functionality in Flip function
-        transform.localScale = new Vector3(transform.localScale.x * -1, 1, 1);
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, 1);
 
         /* Flip function: 
             facingRight = !facingRight;

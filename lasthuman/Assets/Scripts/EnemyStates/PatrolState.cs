@@ -19,13 +19,10 @@ public class PatrolState : IEnemyState
 
         enemy.Move();
 
-        if(enemy.Target != null)
+        // if enemy got target and is in melee range then go into MeleeState
+        if(enemy.Target != null && enemy.InMeleeRange)
         {
             enemy.ChangeState(new MeleeState());
-        }
-        else
-        {
-            enemy.ChangeState(new IdleState());
         }
     }
 
@@ -36,6 +33,8 @@ public class PatrolState : IEnemyState
 
     public void OnTriggerEnter(Collider2D other)
     {
+        // if enemy reached edge 
+        // go in opposite direction
         if(other.tag == "Edge")
         {
             enemy.ChangeDirection();
@@ -44,7 +43,6 @@ public class PatrolState : IEnemyState
 
     private void Patrol()
     {
-
         patrolTimer += Time.deltaTime;
 
         // after patrolDuration seconds go into Idle state

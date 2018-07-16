@@ -10,6 +10,24 @@ public class Enemy : Character
     // property
     public GameObject Target { get; set; }
 
+    [SerializeField]
+    private float MeleeRange;
+
+    public bool InMeleeRange
+    {
+        get
+        {
+            if (Target != null)
+            {
+                // if range is enough to do melee attack return true
+                return Vector2.Distance(transform.position, Target.transform.position) <= MeleeRange;
+            }
+
+            // else false
+            return false;
+        }
+    }
+
     // Use this for initialization
     public override void Start ()
     {
@@ -30,7 +48,7 @@ public class Enemy : Character
         if(Target != null)
         {
             float xDir = Target.transform.position.x - transform.position.x;
-            if(xDir > 0 && facingRight || xDir > 0 && !facingRight)
+            if(xDir < 0 && facingRight || xDir > 0 && !facingRight)
             {
                 ChangeDirection();
             }
@@ -54,10 +72,14 @@ public class Enemy : Character
 
     public void Move()
     {
-        // to avoid sliding
-        MyAnimator.SetFloat("speed", 1);
+        // if attack is false, we cant move
+        if (!Attack)
+        {
+            // to avoid sliding
+            MyAnimator.SetFloat("speed", 1);
 
-        transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
+            transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
+        }
     }
 
     public Vector2 GetDirection()
