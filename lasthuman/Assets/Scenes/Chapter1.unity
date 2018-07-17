@@ -452,7 +452,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 43a7858fb47d96b4c9515d783c2f82cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3cf918651fe4dae49b104bd22e604081, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -475,6 +475,7 @@ Transform:
   - {fileID: 167833131}
   - {fileID: 1210130747}
   - {fileID: 170640691}
+  - {fileID: 62224262}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -511,6 +512,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 35
   health: 700
+  SwordCollider: {fileID: 62224263}
+  damageSources: []
   groundpoints:
   - {fileID: 167833131}
   - {fileID: 1210130747}
@@ -1414,6 +1417,56 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &62224261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 62224262}
+  - component: {fileID: 62224263}
+  m_Layer: 0
+  m_Name: SwordCollider
+  m_TagString: Sword
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &62224262
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 62224261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 17516842}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &62224263
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 62224261}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.23, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.5615654, y: -2.5896068}
+  - {x: -1.223603, y: 1.4979529}
+  - {x: -0.19508743, y: 1.3000218}
+  - {x: 0.73314786, y: 1.0621485}
+  - {x: 1.4602938, y: -2.4082396}
+  - {x: -2.5380564, y: -2.5611498}
 --- !u!1 &64261753
 GameObject:
   m_ObjectHideFlags: 0
@@ -31862,7 +31915,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: d008b9c39b07d4145a818bb0c6a1b712, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a78f80b6f1e587b40af0aa12fa78a051, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -31879,8 +31932,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552119397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.105, y: -10.708, z: 0}
-  m_LocalScale: {x: 1.5396123, y: 1.4708713, z: 1}
+  m_LocalPosition: {x: -48.22, y: -12.43, z: 0}
+  m_LocalScale: {x: 1.5396123, y: 1.3713534, z: 1}
   m_Children:
   - {fileID: 1974960366}
   m_Father: {fileID: 0}
@@ -31899,6 +31952,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   health: 12
+  SwordCollider: {fileID: 0}
+  damageSources:
+  - Sword
   MeleeRange: 4
 --- !u!50 &1552119402
 Rigidbody2D:
@@ -31944,18 +32000,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.68, y: -0.28}
+  m_Offset: {x: -0.68, y: -0.12}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.3, y: 5.19}
+    oldSize: {x: 6.29, y: 5.26}
     newSize: {x: 4.3, y: 5.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.47, y: 4.33}
+  m_Size: {x: 1.47, y: 3.91}
   m_EdgeRadius: 0
 --- !u!1 &1556603500
 GameObject:
@@ -39967,6 +40023,7 @@ GameObject:
   - component: {fileID: 1974960366}
   - component: {fileID: 1974960367}
   - component: {fileID: 1974960368}
+  - component: {fileID: 1974960369}
   m_Layer: 9
   m_Name: Sight
   m_TagString: Untagged
@@ -40024,6 +40081,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 1552119401}
+--- !u!114 &1974960369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1974960365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4863de1b4075974887579c7f6afce02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  other: {fileID: 62224263}
 --- !u!1 &1975206324
 GameObject:
   m_ObjectHideFlags: 0

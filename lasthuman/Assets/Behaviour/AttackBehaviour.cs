@@ -33,6 +33,7 @@ public class AttackBehaviour : StateMachineBehaviour {
     {
         // when done attacking (now both for enemy and player)
         animator.GetComponent<Character>().Attack = false;
+        animator.GetComponent<Character>().MeleeAttack();
         animator.ResetTrigger("attack");
     }
 

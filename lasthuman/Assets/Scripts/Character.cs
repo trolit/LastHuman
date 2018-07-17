@@ -18,10 +18,17 @@ public abstract class Character : MonoBehaviour {
     [SerializeField]
     protected int health;
 
+    [SerializeField]
+    private EdgeCollider2D SwordCollider;
+
     public abstract bool IsDead { get; set; }
     // abstract property which means:
     // every single script needs their own implementation
     // of IsDead
+
+    // contains every damage tag
+    [SerializeField]
+    private List<string> damageSources = new List<string>();
 
     // Use this for initialization
     public virtual void Start ()
@@ -53,7 +60,25 @@ public abstract class Character : MonoBehaviour {
     public abstract IEnumerator TakeDamage();
     // Enemy and Player needs to implement this function
 
+    public void MeleeAttack()
+    {
+        SwordCollider.enabled = !SwordCollider.enabled;
+        // if disabled - enable
+        // if enabled - disable
+    }
+
     public virtual void OnTriggerEnter2D(Collider2D other)
     { 
-}
+        // if tag knife - take damage
+        // but not implemented ability to
+        // throw knife, in case leaving 
+        // comment
+
+        // check if list contains the tag
+        // that we can take damage from
+        if(damageSources.Contains(other.tag))
+        {
+            StartCoroutine(TakeDamage());
+        }
+    }
 }
