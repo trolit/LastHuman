@@ -452,7 +452,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 3cf918651fe4dae49b104bd22e604081, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 689748f7946d07f49b7ae53af258f860, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -469,7 +469,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 17516839}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -196.69, y: -4.94, z: 0}
+  m_LocalPosition: {x: -193.5, y: -4.94, z: 0}
   m_LocalScale: {x: 0.8651907, y: 0.8247021, z: 1}
   m_Children:
   - {fileID: 167833131}
@@ -496,7 +496,7 @@ Rigidbody2D:
   m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &17516844
@@ -511,9 +511,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 35
-  health: 700
-  SwordCollider: {fileID: 62224263}
-  damageSources: []
+  health: 500
+  swordCollider: {fileID: 62224263}
+  damageSources:
+  - EnemySword
   groundpoints:
   - {fileID: 167833131}
   - {fileID: 1210130747}
@@ -30287,6 +30288,56 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1435518181
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1435518182}
+  - component: {fileID: 1435518183}
+  m_Layer: 0
+  m_Name: SwordCollider
+  m_TagString: EnemySword
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1435518182
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435518181}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.49, y: 0.02, z: 0}
+  m_LocalScale: {x: 0.5619532, y: 0.6013767, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1552119400}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &1435518183
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435518181}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.23, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -2.3055203, y: -3.0193825}
+  - {x: -2.1453424, y: 0.63840044}
+  - {x: 3.8135242, y: 0.7039804}
+  - {x: 3.749826, y: -3.0781097}
+  - {x: -0.49147224, y: -3.0581203}
+  - {x: -2.2820153, y: -2.9640653}
 --- !u!1 &1447286292
 GameObject:
   m_ObjectHideFlags: 0
@@ -31915,7 +31966,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: a78f80b6f1e587b40af0aa12fa78a051, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0e87f08c303887d4b9fc2904d8848e8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -31932,9 +31983,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1552119397}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.22, y: -12.43, z: 0}
+  m_LocalPosition: {x: -48.22, y: -11.93, z: 0}
   m_LocalScale: {x: 1.5396123, y: 1.3713534, z: 1}
   m_Children:
+  - {fileID: 1435518182}
   - {fileID: 1974960366}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -31952,7 +32004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 10
   health: 12
-  SwordCollider: {fileID: 0}
+  swordCollider: {fileID: 1435518183}
   damageSources:
   - Sword
   MeleeRange: 4
@@ -31973,7 +32025,7 @@ Rigidbody2D:
   m_GravityScale: 5
   m_Material: {fileID: 0}
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 5
 --- !u!114 &1552119403
@@ -32004,7 +32056,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.29, y: 5.26}
+    oldSize: {x: 4.3, y: 5.19}
     newSize: {x: 4.3, y: 5.19}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -40042,7 +40094,7 @@ Transform:
   m_LocalScale: {x: 0.6923638, y: 0.74666077, z: 1}
   m_Children: []
   m_Father: {fileID: 1552119400}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1974960367
 BoxCollider2D:

@@ -33,7 +33,8 @@ public class AttackBehaviour : StateMachineBehaviour {
     {
         // when done attacking (now both for enemy and player)
         animator.GetComponent<Character>().Attack = false;
-        animator.GetComponent<Character>().MeleeAttack();
+        // disable Sword Collider
+        animator.GetComponent<Character>().SwordCollider.enabled = false;
         animator.ResetTrigger("attack");
     }
 

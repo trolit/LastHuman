@@ -70,16 +70,23 @@ public class Player : Character {
 
     // Update is called once per frame
     void Update () {
-        HandleInput();
+        if(!TakingDamage && !IsDead)
+        {
+            HandleInput();
+        }
     }
 
 	void FixedUpdate () {
-        float horizontal = Input.GetAxis("Horizontal");
-        OnGround = IsGrounded();
+        // if we are not taking damage and we are not dead we can do things...
+        if (!TakingDamage && !IsDead)
+        {
+            float horizontal = Input.GetAxis("Horizontal");
+            OnGround = IsGrounded();
 
-        HandleMovement(horizontal);
-        Flip(horizontal);
-        HandleLayers();
+            HandleMovement(horizontal);
+            Flip(horizontal);
+            HandleLayers();
+        }
 	}
 
     private void HandleMovement(float horizontal)
@@ -156,6 +163,23 @@ public class Player : Character {
 
     public override IEnumerator TakeDamage()
     {
+        health -= 10;
+
+        // Debug.Log("i got damage :(");
+
+        // if we are not dead
+        if(!IsDead)
+        {
+            MyAnimator.SetTrigger("damage");
+        }
+        else
+        {
+            // set layer weight so if we die in the air 
+            // it doesnt play landing animation..
+            MyAnimator.SetLayerWeight(1, 0);
+            MyAnimator.SetTrigger("die");
+        }
+
         yield return null;
     }
 }

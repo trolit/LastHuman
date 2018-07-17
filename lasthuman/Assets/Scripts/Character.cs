@@ -19,9 +19,20 @@ public abstract class Character : MonoBehaviour {
     protected int health;
 
     [SerializeField]
-    private EdgeCollider2D SwordCollider;
+    private EdgeCollider2D swordCollider;
 
     public abstract bool IsDead { get; set; }
+
+    // Encapsulate SwordCollider so we can access it in Behaviour...
+    // property called SwordCollider
+    public EdgeCollider2D SwordCollider
+    {
+        get
+        {
+            return SwordCollider;
+        }
+    }
+
     // abstract property which means:
     // every single script needs their own implementation
     // of IsDead
@@ -62,7 +73,8 @@ public abstract class Character : MonoBehaviour {
 
     public void MeleeAttack()
     {
-        SwordCollider.enabled = !SwordCollider.enabled;
+        // enable Sword Collider
+        SwordCollider.enabled = true;
         // if disabled - enable
         // if enabled - disable
     }
