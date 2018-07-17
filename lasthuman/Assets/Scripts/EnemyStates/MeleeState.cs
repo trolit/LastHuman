@@ -5,7 +5,7 @@ using UnityEngine;
 public class MeleeState : IEnemyState
 {
     private float attackTimer;
-    // how long till next attack
+    // how long till the next attack
     private float attackCooldown = 3;
     private bool canAttack = true;
     

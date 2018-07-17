@@ -39,6 +39,20 @@ public class Player : Character {
     
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
+
+    public override bool IsDead
+    {
+        get
+        {
+            return health <= 0;
+        }
+        
+        set
+        {
+
+        }
+    }
+
     // properties start with capital letter!!!
 
     private Vector2 startPos;
@@ -138,5 +152,10 @@ public class Player : Character {
         {
             MyAnimator.SetLayerWeight(1, 0);
         }
+    }
+
+    public override IEnumerator TakeDamage()
+    {
+        yield return null;
     }
 }

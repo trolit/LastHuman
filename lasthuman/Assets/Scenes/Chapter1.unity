@@ -510,6 +510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 35
+  health: 700
   groundpoints:
   - {fileID: 167833131}
   - {fileID: 1210130747}
@@ -31897,6 +31898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 10
+  health: 12
   MeleeRange: 4
 --- !u!50 &1552119402
 Rigidbody2D:

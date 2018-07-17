@@ -11,7 +11,17 @@ public abstract class Character : MonoBehaviour {
 
     public bool Attack { get; set; }
 
+    public bool TakingDamage { get; set; }
+
     public Animator MyAnimator { get; private set; }
+
+    [SerializeField]
+    protected int health;
+
+    public abstract bool IsDead { get; set; }
+    // abstract property which means:
+    // every single script needs their own implementation
+    // of IsDead
 
     // Use this for initialization
     public virtual void Start ()
@@ -39,4 +49,11 @@ public abstract class Character : MonoBehaviour {
             transform.localScale = theScale; 
         */
     }
+
+    public abstract IEnumerator TakeDamage();
+    // Enemy and Player needs to implement this function
+
+    public virtual void OnTriggerEnter2D(Collider2D other)
+    { 
+}
 }

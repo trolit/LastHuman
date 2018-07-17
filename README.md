@@ -15,10 +15,10 @@ się w jedną stronę następuje zatrzymanie postaci(nie może dalej się rusza�
 się poruszyć.~~ 
 - ~~przycisku po kliknięciu zostawia kolor kliknięcia~~
 - ~~przy wykonaniu ataku w skoku pojawia się podwójna animacja~~
+- ~~ruch wroga nie działa~~
 
 
-
-#### Warto zajrzeć jeżeli ktoś chce rozpocząć przygodę z Unity:####
+#### Warto zajrzeć(świetne poradniki z Unity):####
 
 Brackeys:
 
