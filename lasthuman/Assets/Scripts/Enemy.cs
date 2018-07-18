@@ -47,6 +47,7 @@ public class Enemy : Character
         base.Start();
 
         // RemoveTarget function called whenever Players Dead event is triggered
+        // we can access Player instance cause we have that singleton...
         Player.Instance.Dead += new DeadEventHandler(RemoveTarget);
 
         ChangeState(new IdleState());
@@ -142,5 +143,10 @@ public class Enemy : Character
             MyAnimator.SetTrigger("die");
             yield return null;
         }
+    }
+
+    public override void Death()
+    {
+        Destroy(gameObject);
     }
 }

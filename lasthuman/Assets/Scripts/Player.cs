@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // delegate to pass an function
-// so we can create an event
+// so we can create an event...
 public delegate void DeadEventHandler();
 
 public class Player : Character {
 
-    // event that enemy can listen to this...
+    // event that enemy can listen to...
     // whenever player dies , triggers this
     // event and enemy knows that he is dead
     public event DeadEventHandler Dead;
@@ -95,6 +95,10 @@ public class Player : Character {
     void Update () {
         if(!TakingDamage && !IsDead)
         {
+            if(transform.position.y <= -14f)
+            {
+                Death();
+            }
             HandleInput();
         }
     }
@@ -234,5 +238,15 @@ public class Player : Character {
                 MyAnimator.SetTrigger("die");
             }
         }
+    }
+
+    public override void Death()
+    {
+        MyRigidbody.velocity = Vector2.zero;
+        // go from death animation to idle..
+        // we need to respawn
+        MyAnimator.SetTrigger("idle");
+        health = 30;
+        transform.position = startPos;
     }
 }

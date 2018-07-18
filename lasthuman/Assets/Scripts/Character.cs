@@ -23,6 +23,8 @@ public abstract class Character : MonoBehaviour {
 
     public abstract bool IsDead { get; set; }
 
+    public abstract void Death();
+
     // Encapsulate SwordCollider so we can access it in Behaviour...
     // property called SwordCollider
     public EdgeCollider2D SwordCollider
