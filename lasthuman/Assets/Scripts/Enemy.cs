@@ -45,6 +45,10 @@ public class Enemy : Character
     public override void Start ()
     {
         base.Start();
+
+        // RemoveTarget function called whenever Players Dead event is triggered
+        Player.Instance.Dead += new DeadEventHandler(RemoveTarget);
+
         ChangeState(new IdleState());
 	}
 	
@@ -62,6 +66,15 @@ public class Enemy : Character
             LookAtTarget();
         }
 	}
+
+    public void RemoveTarget()
+    {
+        // if enemy kills player
+        // goes into Patrol State
+        // and loses target
+        Target = null;
+        ChangeState(new PatrolState());
+    }
 
     // keep an eye on player
     private void LookAtTarget()

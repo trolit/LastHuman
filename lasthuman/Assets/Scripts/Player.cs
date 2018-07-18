@@ -2,7 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// delegate to pass an function
+// so we can create an event
+public delegate void DeadEventHandler();
+
 public class Player : Character {
+
+    // event that enemy can listen to this...
+    // whenever player dies , triggers this
+    // event and enemy knows that he is dead
+    public event DeadEventHandler Dead;
 
     // variables start with small letter
     private static Player instance;
@@ -51,6 +60,12 @@ public class Player : Character {
     {
         get
         {
+            if (health <= 0)
+            {
+                // make sure to trigger OnDead function
+                OnDead();
+            }
+
             return health <= 0;
         }
         
@@ -97,6 +112,14 @@ public class Player : Character {
         }
 	}
 
+    public void OnDead()
+    {
+        if(Dead != null)
+        {
+            // triggering event called Dead
+            Dead();
+        }
+    }
     private void HandleMovement(float horizontal)
     {
         if(MyRigidbody.velocity.y < 0)
