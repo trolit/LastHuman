@@ -74,6 +74,7 @@ public abstract class Character : MonoBehaviour {
     public void MeleeAttack()
     {
         // enable Sword Collider
+        // then disable in Attack behaviour
         SwordCollider.enabled = true;
     }
 

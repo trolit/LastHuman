@@ -40,6 +40,13 @@ public class Player : Character {
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
 
+    private bool immortal = false;
+
+    [SerializeField]
+    private float immortalTime;
+
+    private SpriteRenderer spriteRenderer;
+
     public override bool IsDead
     {
         get
@@ -65,7 +72,8 @@ public class Player : Character {
 
         startPos = transform.position;
         MyRigidbody = GetComponent<Rigidbody2D>();
-        
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
     }
 
     // Update is called once per frame
@@ -161,25 +169,47 @@ public class Player : Character {
         }
     }
 
+    private IEnumerator IndicateImmortal()
+    {
+        // as long as we are immortal...
+        while(immortal)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(.1f);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
     public override IEnumerator TakeDamage()
     {
-        health -= 10;
-
-        // Debug.Log("i got damage :(");
-
-        // if we are not dead
-        if(!IsDead)
+        // if we are not immortal
+        if(!immortal)
         {
-            MyAnimator.SetTrigger("damage");
-        }
-        else
-        {
-            // set layer weight so if we die in the air 
-            // it doesnt play landing animation..
-            MyAnimator.SetLayerWeight(1, 0);
-            MyAnimator.SetTrigger("die");
-        }
+            health -= 10;
 
-        yield return null;
+            // Debug.Log("i got damage :(");
+
+            // if we are not dead
+            if (!IsDead)
+            {
+                MyAnimator.SetTrigger("damage");
+                immortal = true;
+
+                StartCoroutine(IndicateImmortal());
+
+                // wait immortalTime seconds...
+                yield return new WaitForSeconds(immortalTime);
+
+                immortal = false;
+            }
+            else
+            {
+                // set layer weight so if we die in the air 
+                // it doesnt play landing animation..
+                MyAnimator.SetLayerWeight(1, 0);
+                MyAnimator.SetTrigger("die");
+            }
+        }
     }
 }

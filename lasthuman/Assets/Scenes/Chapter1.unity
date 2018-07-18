@@ -525,6 +525,7 @@ MonoBehaviour:
     m_Bits: 4294966783
   aircontrol: 1
   JumpForce: 1500
+  immortalTime: 3
 --- !u!61 &17516845
 BoxCollider2D:
   m_ObjectHideFlags: 0
