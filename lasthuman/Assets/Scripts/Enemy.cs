@@ -41,6 +41,11 @@ public class Enemy : Character
         }
     }
 
+    [SerializeField]
+    private Transform leftEdge;
+    [SerializeField]
+    private Transform rightEdge;
+
     // Use this for initialization
     public override void Start ()
     {
@@ -110,10 +115,21 @@ public class Enemy : Character
         // if attack is false, we cant move
         if (!Attack)
         {
-            // to avoid sliding
-            MyAnimator.SetFloat("speed", 1);
+            // can move unless on the edge
+            if((GetDirection().x > 0 && transform.position.x < rightEdge.position.x) || (GetDirection().x < 0 && transform.position.x > rightEdge.position.x))
+            {
+                // to avoid sliding
+                MyAnimator.SetFloat("speed", 1);
 
-            transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
+                transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
+            }
+            // if our current state is PatrolState
+            // Change direction so we can move and
+            // continue patrolling
+            else if(currentState is PatrolState)
+            {
+                ChangeDirection();
+            }
         }
     }
 

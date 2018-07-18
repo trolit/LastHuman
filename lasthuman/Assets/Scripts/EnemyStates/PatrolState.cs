@@ -33,12 +33,20 @@ public class PatrolState : IEnemyState
 
     public void OnTriggerEnter(Collider2D other)
     {
+        /*
+         * Now we check edges by position in Enemy
+         * script, in function "Move", else if 
+         * contains ChangeDirection function
+         * so no need in doing the same over here
+         * ....soooo commenting this one
+         
         // if enemy reached edge 
         // go in opposite direction
         if(other.tag == "Edge")
         {
             enemy.ChangeDirection();
         }
+        */
     }
 
     private void Patrol()
