@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 35
-  health: 500
+  health: 25
   swordCollider: {fileID: 62224263}
   damageSources:
   - EnemySword
@@ -30315,7 +30315,7 @@ Transform:
   m_LocalScale: {x: 0.5619532, y: 0.6013767, z: 1}
   m_Children: []
   m_Father: {fileID: 1552119400}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1435518183
 EdgeCollider2D:
@@ -30334,9 +30334,9 @@ EdgeCollider2D:
   m_Points:
   - {x: -2.3055203, y: -3.0193825}
   - {x: -2.1453424, y: 0.63840044}
-  - {x: 3.8135242, y: 0.7039804}
-  - {x: 3.749826, y: -3.0781097}
-  - {x: -0.49147224, y: -3.0581203}
+  - {x: 3.7300029, y: 2.1935358}
+  - {x: 3.749826, y: -4.392422}
+  - {x: -0.9090743, y: -3.4962242}
   - {x: -2.2820153, y: -2.9640653}
 --- !u!1 &1447286292
 GameObject:
@@ -31986,8 +31986,8 @@ Transform:
   m_LocalPosition: {x: -48.22, y: -11.93, z: 0}
   m_LocalScale: {x: 1.5396123, y: 1.3713534, z: 1}
   m_Children:
-  - {fileID: 1435518182}
   - {fileID: 1974960366}
+  - {fileID: 1435518182}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -40094,7 +40094,7 @@ Transform:
   m_LocalScale: {x: 0.6923638, y: 0.74666077, z: 1}
   m_Children: []
   m_Father: {fileID: 1552119400}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1974960367
 BoxCollider2D:

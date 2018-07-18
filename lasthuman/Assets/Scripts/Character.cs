@@ -29,7 +29,7 @@ public abstract class Character : MonoBehaviour {
     {
         get
         {
-            return SwordCollider;
+            return swordCollider;
         }
     }
 
@@ -75,8 +75,6 @@ public abstract class Character : MonoBehaviour {
     {
         // enable Sword Collider
         SwordCollider.enabled = true;
-        // if disabled - enable
-        // if enabled - disable
     }
 
     public virtual void OnTriggerEnter2D(Collider2D other)
