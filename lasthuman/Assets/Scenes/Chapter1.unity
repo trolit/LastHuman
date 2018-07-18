@@ -1428,6 +1428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 62224262}
   - component: {fileID: 62224263}
+  - component: {fileID: 62224264}
   m_Layer: 0
   m_Name: SwordCollider
   m_TagString: Sword
@@ -1469,6 +1470,18 @@ EdgeCollider2D:
   - {x: 0.73314786, y: 1.0621485}
   - {x: 1.4602938, y: -2.4082396}
   - {x: -2.5380564, y: -2.5611498}
+--- !u!114 &62224264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 62224261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22431a9acc9effe44ada0c8a7429d486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
 --- !u!1 &64261753
 GameObject:
   m_ObjectHideFlags: 0
@@ -30298,6 +30311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1435518182}
   - component: {fileID: 1435518183}
+  - component: {fileID: 1435518184}
   m_Layer: 0
   m_Name: SwordCollider
   m_TagString: EnemySword
@@ -30339,6 +30353,18 @@ EdgeCollider2D:
   - {x: 3.749826, y: -4.392422}
   - {x: -0.9090743, y: -3.4962242}
   - {x: -2.2820153, y: -2.9640653}
+--- !u!114 &1435518184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1435518181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22431a9acc9effe44ada0c8a7429d486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
 --- !u!1 &1447286292
 GameObject:
   m_ObjectHideFlags: 0
@@ -31909,7 +31935,7 @@ GameObject:
   - component: {fileID: 1552119404}
   m_Layer: 0
   m_Name: Zombie1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

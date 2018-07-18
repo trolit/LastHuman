@@ -95,7 +95,7 @@ public class Player : Character {
     void Update () {
         if(!TakingDamage && !IsDead)
         {
-            if(transform.position.y <= -14f)
+            if(transform.position.y <= -40f)
             {
                 Death();
             }
