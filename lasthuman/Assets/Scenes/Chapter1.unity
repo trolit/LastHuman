@@ -533,6 +533,10 @@ MonoBehaviour:
   aircontrol: 1
   JumpForce: 1500
   immortalTime: 3
+  healthStat:
+    bar: {fileID: 780170823}
+    maxValue: 100
+    currentValue: 100
 --- !u!61 &17516845
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -17812,6 +17816,7 @@ GameObject:
   - component: {fileID: 780170820}
   - component: {fileID: 780170822}
   - component: {fileID: 780170821}
+  - component: {fileID: 780170823}
   m_Layer: 5
   m_Name: Healthbar
   m_TagString: Untagged
@@ -17872,6 +17877,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 780170819}
+--- !u!114 &780170823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 780170819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccaf1edbca400924d93d1c6fc4bb2567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillAmount: 0
+  content: {fileID: 1585856056}
 --- !u!1 &781214776
 GameObject:
   m_ObjectHideFlags: 0

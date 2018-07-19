@@ -67,6 +67,9 @@ public class Player : Character
 
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    private Stat healthStat;
+
     public override bool IsDead
     {
         get
