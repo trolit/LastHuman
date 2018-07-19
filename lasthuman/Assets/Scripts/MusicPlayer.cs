@@ -10,7 +10,9 @@ public class MusicPlayer : MonoBehaviour {
 	void Start () {
         audiosource = FindObjectOfType<AudioSource>();
         audiosource.loop = false;
-	}
+        audiosource.clip = GetRandomClip();
+        audiosource.Play();
+    }
 	
     private AudioClip GetRandomClip()
     {
@@ -19,11 +21,6 @@ public class MusicPlayer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if(!audiosource.isPlaying)
-        {
-            audiosource.clip = GetRandomClip();
-            audiosource.Play();
 
-        }
 	}
 }

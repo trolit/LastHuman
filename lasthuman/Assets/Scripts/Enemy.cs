@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Enemy : Character
 {
+    // sound effects:
+    public AudioClip slash_hit01;
+    public AudioClip slash_hit02;
+    public AudioClip slash_hit03;
+    public AudioClip slash_hit04;
+
+    static AudioSource audioZombie;
+
     // variable to watch state
     private IEnemyState currentState;
 
@@ -49,6 +57,8 @@ public class Enemy : Character
     // Use this for initialization
     public override void Start ()
     {
+        audioZombie = GetComponent<AudioSource>();
+
         base.Start();
 
         // RemoveTarget function called whenever Players Dead event is triggered
@@ -150,10 +160,16 @@ public class Enemy : Character
     {
         health -= 10;
         // for now -10 damage , later maybe random?
-
+        
         if(!IsDead)
         {
             MyAnimator.SetTrigger("damage");
+
+            int random = Random.Range(1, 4);
+            if (random == 1) audioZombie.PlayOneShot(slash_hit01);
+            else if (random == 2) audioZombie.PlayOneShot(slash_hit02);
+            else if (random == 3) audioZombie.PlayOneShot(slash_hit03);
+            else if (random == 4) audioZombie.PlayOneShot(slash_hit04);
         }
         else
         {

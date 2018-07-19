@@ -6,7 +6,18 @@ using UnityEngine;
 // so we can create an event...
 public delegate void DeadEventHandler();
 
-public class Player : Character {
+public class Player : Character
+{
+    static AudioSource audioSrc;
+    public AudioClip hurt01;
+    public AudioClip hurt02;
+    public AudioClip hurt03;
+
+    public AudioClip slash_miss01;
+    public AudioClip slash_miss02;
+    public AudioClip slash_miss03;
+
+    public static bool HitEnemy = false;
 
     // event that enemy can listen to...
     // whenever player dies , triggers this
@@ -74,14 +85,14 @@ public class Player : Character {
 
         }
     }
-
     // properties start with capital letter!!!
-
     private Vector2 startPos;
 
     // Use this for initialization
     public override void Start ()
     {
+        audioSrc = GetComponent<AudioSource>();
+
         // call Start function from Character
         base.Start();
 
@@ -220,6 +231,12 @@ public class Player : Character {
             // if we are not dead
             if (!IsDead)
             {
+                int random = Random.Range(1, 3);
+                if (random == 1) audioSrc.PlayOneShot(hurt01);
+                else if (random == 2) audioSrc.PlayOneShot(hurt02);
+                else if (random == 3) audioSrc.PlayOneShot(hurt03);
+                Debug.Log(random);
+
                 MyAnimator.SetTrigger("damage");
                 immortal = true;
 
