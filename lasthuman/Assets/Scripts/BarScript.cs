@@ -5,12 +5,16 @@ using UnityEngine.UI;
 
 public class BarScript : MonoBehaviour
 {
-
-    [SerializeField]
     private float fillAmount;
 
     [SerializeField]
+    private float lerpSpeed;
+
+    [SerializeField]
     private Image content;
+
+    [SerializeField]
+    private Text valueText;
 
     public float MaxValue { get; set; }
 
@@ -21,6 +25,9 @@ public class BarScript : MonoBehaviour
     {
         set
         {
+            string[] tmp = valueText.text.Split(':');
+            // not Value but value! - take parameter or it would call itself - stack overflow
+            valueText.text = tmp[0] + ": " + value;
             fillAmount = Map(value, 0, MaxValue, 0, 1);
         }
     }
@@ -42,7 +49,9 @@ public class BarScript : MonoBehaviour
         // if our fill amount is different that this one in content - update
         if(fillAmount != content.fillAmount)
         {
-            content.fillAmount = fillAmount;
+            // Lerp will move from point to point with speed set in "lerpSpeed" variable
+            // multiplied by deltaTime
+            content.fillAmount = Mathf.Lerp(content.fillAmount, fillAmount, Time.deltaTime * lerpSpeed);
         }
     }
 

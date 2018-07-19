@@ -24,7 +24,8 @@ public class Stat
 
         set
         {
-            this.currentValue = value;
+            // Clamp - value cannott go below 0 and over MaxValue stated by script
+            this.currentValue = Mathf.Clamp(value, 0, MaxValue);
             // bar value need to be equal to currentValue
             bar.Value = currentValue;
         }
@@ -43,5 +44,13 @@ public class Stat
             this.maxValue = value;
             bar.MaxValue = maxValue;
         }
+    }
+
+    public void Initialize()
+    {
+        // max value is the one we write in inspector
+        this.MaxValue = maxValue;
+
+        this.CurrentValue = currentValue;
     }
 }

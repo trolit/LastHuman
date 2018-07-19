@@ -74,13 +74,13 @@ public class Player : Character
     {
         get
         {
-            if (health <= 0)
+            if (healthStat.CurrentValue <= 0)
             {
                 // make sure to trigger OnDead function
                 OnDead();
             }
 
-            return health <= 0;
+            return healthStat.CurrentValue <= 0;
         }
         
         set
@@ -90,6 +90,11 @@ public class Player : Character
     }
     // properties start with capital letter!!!
     private Vector2 startPos;
+
+    private void Awake()
+    {
+        healthStat.Initialize();
+    }
 
     // Use this for initialization
     public override void Start ()
@@ -227,7 +232,7 @@ public class Player : Character
         // if we are not immortal
         if(!immortal)
         {
-            health -= 10;
+            healthStat.CurrentValue -= 10;
 
             // Debug.Log("i got damage :(");
 
@@ -266,7 +271,7 @@ public class Player : Character
         // go from death animation to idle..
         // we need to respawn
         MyAnimator.SetTrigger("idle");
-        health = 30;
+        healthStat.CurrentValue = healthStat.MaxValue;
         transform.position = startPos;
     }
 }
