@@ -9,11 +9,15 @@ public class IdleState : IEnemyState
     // instead of Coroutines...
     private float idleTimer;
 
-    private float idleDuration = 5f;
+    private float idleDuration;
 
     public void Enter(Enemy enemy)
     {
         this.enemy = enemy;
+        // every time we enter into idle ..state
+        // random idle duration between 1 and 10
+        // to make it more independent
+        idleDuration = UnityEngine.Random.Range(1, 10);
     }
 
     public void Execute()

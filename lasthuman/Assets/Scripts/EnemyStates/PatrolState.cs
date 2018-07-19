@@ -5,12 +5,16 @@ using UnityEngine;
 public class PatrolState : IEnemyState
 {
     private float patrolTimer;
-    private float patrolDuration = 10f;
+    private float patrolDuration;
     private Enemy enemy;
 
     public void Enter(Enemy enemy)
     {
+        // every time we go into Patrol State
+        // randomize patrol Duration time between
+        // 1 and 10 
         this.enemy = enemy;
+        patrolDuration = UnityEngine.Random.Range(1, 10);
     }
 
     public void Execute()

@@ -116,7 +116,8 @@ public class Enemy : Character
         if (!Attack)
         {
             // can move unless on the edge
-            if((GetDirection().x > 0 && transform.position.x < rightEdge.position.x) || (GetDirection().x < 0 && transform.position.x > rightEdge.position.x))
+            if((GetDirection().x > 0 && transform.position.x < rightEdge.position.x) ||
+                (GetDirection().x < 0 && transform.position.x > leftEdge.position.x))
             {
                 // to avoid sliding
                 MyAnimator.SetFloat("speed", 1);
