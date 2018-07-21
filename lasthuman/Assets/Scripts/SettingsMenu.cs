@@ -15,11 +15,16 @@ public class SettingsMenu : MonoBehaviour {
     // toggles here
     public Toggle vsynctoggle;
 
-    // variables here
-    int antialiasing = PlayerPrefs.GetInt("ant_a");
-
     // arrays here
     Resolution[] resolutions;
+
+    void Awake()
+    {
+        int antialiasing = PlayerPrefs.GetInt("ant_a");
+        // load antialiasing 
+        QualitySettings.antiAliasing = antialiasing;
+        SetAntiAliasingDropdown(antialiasing);
+    }
 
     void Start ()
     {
@@ -38,10 +43,6 @@ public class SettingsMenu : MonoBehaviour {
         // load quality level
         QualitySettings.SetQualityLevel(qualityIndex);
         graphicsDropdown.value = qualityIndex;
-
-        // load antialiasing 
-        QualitySettings.antiAliasing = antialiasing;
-        SetAntiAliasingDropdown();
 
         // load texture quality
         QualitySettings.masterTextureLimit = texture_quality;
@@ -165,7 +166,7 @@ public class SettingsMenu : MonoBehaviour {
             QualitySettings.masterTextureLimit = 3;
         }
     }
-    void SetAntiAliasingDropdown()
+    void SetAntiAliasingDropdown(int antialiasing)
     {
         if (antialiasing == 0)
         {

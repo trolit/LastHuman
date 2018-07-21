@@ -84,6 +84,7 @@ public class Enemy : Character
             {
                 currentState.Execute();
             }
+
             // look at target if taking damage
             LookAtTarget();
         }
@@ -169,7 +170,6 @@ public class Enemy : Character
         {
             healthCanvas.enabled = true;
         }
-        
 
         healthStat.CurrentValue -= 10;
         // for now -10 damage , later maybe random?
