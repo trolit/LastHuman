@@ -12,10 +12,14 @@ public class Player : Character
     public AudioSource[] sounds;
     public static AudioSource audioSrc;
     public static AudioSource footSrc;
+    public static AudioSource takehitSrc;
 
     public AudioClip hurt01;
     public AudioClip hurt02;
     public AudioClip hurt03;
+
+    public AudioClip zombie_attack1;
+    public AudioClip zombie_attack2;
 
     public AudioClip slash_miss01;
     public AudioClip slash_miss02;
@@ -28,6 +32,9 @@ public class Player : Character
     public AudioClip die;
 
     public static bool HitEnemy = false;
+
+    // liczba zyc
+    public static int life = 55;
 
     // event that enemy can listen to...
     // whenever player dies , triggers this
@@ -104,11 +111,11 @@ public class Player : Character
         sounds = GetComponents<AudioSource>();
         audioSrc = sounds[0];
         footSrc = sounds[1];
+        takehitSrc = sounds[2];
 
         // call Start function from Character
         base.Start();
 
-        startPos = transform.position;
         MyRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -126,7 +133,7 @@ public class Player : Character
         }
 
         // handle footstep sound effect
-        if(OnGround && !Attack && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if(!IsDead && OnGround && !Attack && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             footSrc.UnPause();
         }
@@ -147,7 +154,12 @@ public class Player : Character
             Flip(horizontal);
             HandleLayers();
         }
-	}
+
+        if (OnGround)
+        {
+            startPos = transform.position;
+        }
+    }
 
     public void OnDead()
     {
@@ -263,6 +275,10 @@ public class Player : Character
                 else if (random == 2) audioSrc.PlayOneShot(hurt02);
                 else if (random == 3) audioSrc.PlayOneShot(hurt03);
 
+                random = Random.Range(1, 2);
+                if (random == 1) takehitSrc.PlayOneShot(zombie_attack1);
+                else if (random == 2) takehitSrc.PlayOneShot(zombie_attack1);
+
                 MyAnimator.SetTrigger("damage");
                 immortal = true;
 
@@ -287,10 +303,16 @@ public class Player : Character
     public override void Death()
     {
         MyRigidbody.velocity = Vector2.zero;
+        life -= 1;
         // go from death animation to idle..
         // we need to respawn
-        MyAnimator.SetTrigger("idle");
-        healthStat.CurrentValue = healthStat.MaxValue;
-        transform.position = startPos;
+        if (life > 0)
+        {
+            MyAnimator.SetTrigger("idle");
+            healthStat.CurrentValue = healthStat.MaxValue;
+
+            // respawn the player in last position he was on ground - 10 
+            transform.position = new Vector2(startPos.x - 10, startPos.y);
+        }
     }
 }

@@ -10,6 +10,8 @@ public class Enemy : Character
     public AudioClip slash_hit03;
     public AudioClip slash_hit04;
 
+    public AudioClip zombie_die;
+
     static AudioSource audioZombie;
 
     // variable to watch state
@@ -128,7 +130,7 @@ public class Enemy : Character
 
     public void Move()
     {
-        // if attack is false, we cant move
+        // if attack is false, we can move
         if (!Attack)
         {
             // can move unless on the edge
@@ -186,6 +188,7 @@ public class Enemy : Character
         }
         else
         {
+            audioZombie.PlayOneShot(zombie_die);
             MyAnimator.SetTrigger("die");
             healthCanvas.enabled = false;
             yield return null;
