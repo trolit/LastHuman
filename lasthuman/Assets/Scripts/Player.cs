@@ -8,7 +8,11 @@ public delegate void DeadEventHandler();
 
 public class Player : Character
 {
-    static AudioSource audioSrc;
+    // array of AudioSources
+    public AudioSource[] sounds;
+    public static AudioSource audioSrc;
+    public static AudioSource footSrc;
+
     public AudioClip hurt01;
     public AudioClip hurt02;
     public AudioClip hurt03;
@@ -16,6 +20,12 @@ public class Player : Character
     public AudioClip slash_miss01;
     public AudioClip slash_miss02;
     public AudioClip slash_miss03;
+
+    public AudioClip jump;
+
+    public AudioClip run;
+
+    public AudioClip die;
 
     public static bool HitEnemy = false;
 
@@ -91,7 +101,9 @@ public class Player : Character
     // Use this for initialization
     public override void Start ()
     {
-        audioSrc = GetComponent<AudioSource>();
+        sounds = GetComponents<AudioSource>();
+        audioSrc = sounds[0];
+        footSrc = sounds[1];
 
         // call Start function from Character
         base.Start();
@@ -111,6 +123,16 @@ public class Player : Character
                 Death();
             }
             HandleInput();
+        }
+
+        // handle footstep sound effect
+        if(OnGround && !Attack && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        {
+            footSrc.UnPause();
+        }
+        else
+        {
+            footSrc.Pause();
         }
     }
 
@@ -160,10 +182,15 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.F))
         {
             MyAnimator.SetTrigger("attack");
+            int random = Random.Range(1, 3);
+            if (random == 1) audioSrc.PlayOneShot(slash_miss01);
+            else if (random == 2) audioSrc.PlayOneShot(slash_miss02);
+            else if (random == 3) audioSrc.PlayOneShot(slash_miss03);
         }
         if(Input.GetKeyDown(KeyCode.Space))
         {
             MyAnimator.SetTrigger("jump");
+            audioSrc.PlayOneShot(jump);
         }
     }
 
@@ -235,7 +262,6 @@ public class Player : Character
                 if (random == 1) audioSrc.PlayOneShot(hurt01);
                 else if (random == 2) audioSrc.PlayOneShot(hurt02);
                 else if (random == 3) audioSrc.PlayOneShot(hurt03);
-                Debug.Log(random);
 
                 MyAnimator.SetTrigger("damage");
                 immortal = true;
@@ -251,6 +277,7 @@ public class Player : Character
             {
                 // set layer weight so if we die in the air 
                 // it doesnt play landing animation..
+                audioSrc.PlayOneShot(die);
                 MyAnimator.SetLayerWeight(1, 0);
                 MyAnimator.SetTrigger("die");
             }
