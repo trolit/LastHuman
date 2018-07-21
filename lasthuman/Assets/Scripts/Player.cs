@@ -67,9 +67,6 @@ public class Player : Character
 
     private SpriteRenderer spriteRenderer;
 
-    [SerializeField]
-    private Stat healthStat;
-
     public override bool IsDead
     {
         get
@@ -90,11 +87,6 @@ public class Player : Character
     }
     // properties start with capital letter!!!
     private Vector2 startPos;
-
-    private void Awake()
-    {
-        healthStat.Initialize();
-    }
 
     // Use this for initialization
     public override void Start ()

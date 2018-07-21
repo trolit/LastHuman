@@ -40,7 +40,7 @@ public class Enemy : Character
     {
         get
         {
-            return health <= 0;
+            return healthStat.CurrentValue <= 0;
         }
 
         set
@@ -54,6 +54,8 @@ public class Enemy : Character
     [SerializeField]
     private Transform rightEdge;
 
+    private Canvas healthCanvas;
+
     // Use this for initialization
     public override void Start ()
     {
@@ -66,7 +68,11 @@ public class Enemy : Character
         Player.Instance.Dead += new DeadEventHandler(RemoveTarget);
 
         ChangeState(new IdleState());
-	}
+
+        // reference to Canvas so will be able to attach/detach Canvas which has enemy health bar
+        healthCanvas = transform.GetComponentInChildren<Canvas>();
+        healthCanvas.enabled = false;
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -158,7 +164,14 @@ public class Enemy : Character
 
     public override IEnumerator TakeDamage()
     {
-        health -= 10;
+        
+        if(!healthCanvas.isActiveAndEnabled)
+        {
+            healthCanvas.enabled = true;
+        }
+        
+
+        healthStat.CurrentValue -= 10;
         // for now -10 damage , later maybe random?
         
         if(!IsDead)
@@ -174,6 +187,7 @@ public class Enemy : Character
         else
         {
             MyAnimator.SetTrigger("die");
+            healthCanvas.enabled = false;
             yield return null;
         }
     }
