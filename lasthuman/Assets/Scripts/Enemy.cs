@@ -71,7 +71,6 @@ public class Enemy : Character
 
         // reference to Canvas so will be able to attach/detach Canvas which has enemy health bar
         healthCanvas = transform.GetComponentInChildren<Canvas>();
-        healthCanvas.enabled = false;
     }
 	
 	// Update is called once per frame
@@ -171,7 +170,8 @@ public class Enemy : Character
             healthCanvas.enabled = true;
         }
 
-        healthStat.CurrentValue -= 10;
+        int damage = Random.Range(5, 20);
+        healthStat.CurrentValue -= damage;
         // for now -10 damage , later maybe random?
         
         if(!IsDead)
