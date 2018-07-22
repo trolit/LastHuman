@@ -9,6 +9,7 @@ TagManager:
   - EnemySword
   - Enemy
   - Soul
+  - Whisper
   layers:
   - Default
   - TransparentFX

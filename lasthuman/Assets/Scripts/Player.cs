@@ -75,7 +75,7 @@ public class Player : Character
     private float JumpForce;
 
     public Rigidbody2D MyRigidbody { get; set; }
-    
+
     public bool Jump { get; set; }
     public bool OnGround { get; set; }
 
@@ -98,7 +98,7 @@ public class Player : Character
 
             return healthStat.CurrentValue <= 0;
         }
-        
+
         set
         {
 
@@ -108,7 +108,7 @@ public class Player : Character
     private Vector2 startPos;
 
     // Use this for initialization
-    public override void Start ()
+    public override void Start()
     {
         sounds = GetComponents<AudioSource>();
         audioSrc = sounds[0];
@@ -121,13 +121,15 @@ public class Player : Character
         MyRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
+        FloatingTextController.Initialize();
     }
 
     // Update is called once per frame
-    void Update () {
-        if(!TakingDamage && !IsDead)
+    void Update()
+    {
+        if (!TakingDamage && !IsDead)
         {
-            if(transform.position.y <= -40f)
+            if (transform.position.y <= -40f)
             {
                 Death();
             }
@@ -135,7 +137,7 @@ public class Player : Character
         }
 
         // handle footstep sound effect
-        if(!IsDead && OnGround && !Attack && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
+        if (!IsDead && OnGround && !Attack && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             footSrc.UnPause();
         }
@@ -145,7 +147,8 @@ public class Player : Character
         }
     }
 
-	void FixedUpdate () {
+    void FixedUpdate()
+    {
         // if we are not taking damage and we are not dead we can do things...
         if (!TakingDamage && !IsDead)
         {
@@ -165,7 +168,7 @@ public class Player : Character
 
     public void OnDead()
     {
-        if(Dead != null)
+        if (Dead != null)
         {
             // triggering event called Dead
             Dead();
@@ -173,17 +176,17 @@ public class Player : Character
     }
     private void HandleMovement(float horizontal)
     {
-        if(MyRigidbody.velocity.y < 0)
+        if (MyRigidbody.velocity.y < 0)
         {
             MyAnimator.SetBool("land", true);
         }
 
-        if(!Attack && (OnGround || aircontrol))
+        if (!Attack && (OnGround || aircontrol))
         {
             MyRigidbody.velocity = new Vector2(horizontal * movementSpeed, MyRigidbody.velocity.y);
         }
 
-        if(Jump && MyRigidbody.velocity.y == 0)
+        if (Jump && MyRigidbody.velocity.y == 0)
         {
             MyRigidbody.AddForce(new Vector2(0, JumpForce));
             audioSrc.PlayOneShot(jump);
@@ -202,7 +205,7 @@ public class Player : Character
             else if (random == 2) audioSrc.PlayOneShot(slash_miss02);
             else if (random == 3) audioSrc.PlayOneShot(slash_miss03);
         }
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             MyAnimator.SetTrigger("jump");
         }
@@ -210,7 +213,7 @@ public class Player : Character
 
     private void Flip(float horizontal)
     {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
+        if (horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
         {
             ChangeDirection();
         }
@@ -251,7 +254,7 @@ public class Player : Character
     private IEnumerator IndicateImmortal()
     {
         // as long as we are immortal...
-        while(immortal)
+        while (immortal)
         {
             spriteRenderer.enabled = false;
             yield return new WaitForSeconds(.1f);
@@ -263,9 +266,13 @@ public class Player : Character
     public override IEnumerator TakeDamage()
     {
         // if we are not immortal
-        if(!immortal)
+        if (!immortal)
         {
-            healthStat.CurrentValue -= 10;
+
+            int damage = Random.Range(2, 19);
+            healthStat.CurrentValue -= damage;
+
+            FloatingTextController.CreateFloatingText(damage.ToString(), transform);
 
             // Debug.Log("i got damage :(");
 
@@ -317,12 +324,12 @@ public class Player : Character
             transform.position = new Vector2(startPos.x - 10, startPos.y);
         }
     }
-    
+
     // functionality to pickup souls
     private void OnCollisionEnter2D(Collision2D other)
     {
         // if I collide with a soul
-        if(other.gameObject.tag == "Soul")
+        if (other.gameObject.tag == "Soul")
         {
             GameManager.Instance.CollectedSouls++;
 
