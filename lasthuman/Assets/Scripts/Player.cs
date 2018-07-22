@@ -31,6 +31,8 @@ public class Player : Character
 
     public AudioClip die;
 
+    public AudioClip pickup;
+
     public static bool HitEnemy = false;
 
     // liczba zyc
@@ -184,6 +186,7 @@ public class Player : Character
         if(Jump && MyRigidbody.velocity.y == 0)
         {
             MyRigidbody.AddForce(new Vector2(0, JumpForce));
+            audioSrc.PlayOneShot(jump);
         }
 
         MyAnimator.SetFloat("speed", Mathf.Abs(horizontal));
@@ -202,7 +205,6 @@ public class Player : Character
         if(Input.GetKeyDown(KeyCode.Space))
         {
             MyAnimator.SetTrigger("jump");
-            audioSrc.PlayOneShot(jump);
         }
     }
 
@@ -323,6 +325,10 @@ public class Player : Character
         if(other.gameObject.tag == "Soul")
         {
             GameManager.Instance.CollectedSouls++;
+
+            // play pick up sound
+            audioSrc.PlayOneShot(pickup);
+
             // destroy a soul
             Destroy(other.gameObject);
         }

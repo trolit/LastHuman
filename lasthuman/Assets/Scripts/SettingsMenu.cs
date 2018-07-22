@@ -170,19 +170,19 @@ public class SettingsMenu : MonoBehaviour {
     {
         if (antialiasing == 0)
         {
-            antialiasingDropdown.value = 0;
+            antialiasingDropdown.value = (int)0;
         }
         else if (antialiasing == 2)
         {
-            antialiasingDropdown.value = 1;
+            antialiasingDropdown.value = (int)1;
         }
         else if (antialiasing == 4)
         {
-            antialiasingDropdown.value = 2;
+            antialiasingDropdown.value = (int)2;
         }
         else if (antialiasing == 8)
         {
-            antialiasingDropdown.value = 3;
+            antialiasingDropdown.value = (int)3;
         }
     }
 
