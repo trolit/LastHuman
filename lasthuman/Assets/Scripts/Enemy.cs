@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : Character
 {
+    private bool DroppedCoin = false;
+
     // sound effects:
     public AudioClip slash_hit01;
     public AudioClip slash_hit02;
@@ -19,6 +22,9 @@ public class Enemy : Character
 
     // property Target to set enemy Target
     public GameObject Target { get; set; }
+
+    [SerializeField]
+    private Image image;
 
     [SerializeField]
     private float MeleeRange;
@@ -88,6 +94,17 @@ public class Enemy : Character
 
             // look at target if taking damage
             LookAtTarget();
+        }
+
+        
+        // flip enemy bar
+        if(facingRight)
+        {
+            image.fillOrigin = 0;
+        }
+        else
+        {
+            image.fillOrigin = 1;
         }
 	}
 
@@ -167,7 +184,7 @@ public class Enemy : Character
     public override IEnumerator TakeDamage()
     {
         
-        if(!healthCanvas.isActiveAndEnabled)
+        if(!healthCanvas.isActiveAndEnabled && !IsDead)
         {
             healthCanvas.enabled = true;
         }
@@ -186,11 +203,16 @@ public class Enemy : Character
             else if (random == 3) audioZombie.PlayOneShot(slash_hit03);
             else if (random == 4) audioZombie.PlayOneShot(slash_hit04);
         }
-        else
+        else if(IsDead && !DroppedCoin)
         {
             audioZombie.PlayOneShot(zombie_die);
             MyAnimator.SetTrigger("die");
+
+            // spawns soul
+            Instantiate(GameManager.Instance.SoulPrefab, new Vector3(transform.position.x, transform.position.y + 1.5f), Quaternion.identity);
             healthCanvas.enabled = false;
+            DroppedCoin = true;
+
             yield return null;
         }
     }

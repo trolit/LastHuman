@@ -315,4 +315,16 @@ public class Player : Character
             transform.position = new Vector2(startPos.x - 10, startPos.y);
         }
     }
+    
+    // functionality to pickup souls
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        // if I collide with a soul
+        if(other.gameObject.tag == "Soul")
+        {
+            GameManager.Instance.CollectedSouls++;
+            // destroy a soul
+            Destroy(other.gameObject);
+        }
+    }
 }
