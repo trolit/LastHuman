@@ -15,6 +15,9 @@ public class Player : Character
     public static AudioSource footSrc;
     public static AudioSource takehitSrc;
     public static AudioSource whisperSrc;
+    public static AudioSource consumeSoul;
+
+    public AudioClip consumeSoulClip;
 
     public AudioClip hurt01;
     public AudioClip hurt02;
@@ -53,6 +56,9 @@ public class Player : Character
     // Warning text when no souls
     [SerializeField]
     private Text warnText;
+
+    [SerializeField]
+    private Text healthMaxText;
 
     // access life text
     [SerializeField]
@@ -411,13 +417,17 @@ public class Player : Character
 
             GameManager.Instance.CollectedSouls--;
 
+            // play sound
+            consumeSoul.PlayOneShot(consumeSoulClip);
+
             healthStat.CurrentValue += healthAmount;
 
             FloatingTextController.CreateFloatingText(healthAmount.ToString(), transform);
         }
         else if(GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue >= 0)
         {
-            // wyswietl tekst ze max zycia
+            healthMaxText.text = "! ! YOU HAVE MAX HEALTH ! !";
+            Invoke("HideHealthText", 1.5f);
         }
         else if(GameManager.Instance.CollectedSouls <= 0)
         {
@@ -426,8 +436,13 @@ public class Player : Character
         }
     }
 
-    private void HideText()
+    private void HideWarnText()
     {
         warnText.text = "";
+    }
+
+    private void HideHealthText()
+    {
+        healthMaxText.text = "";
     }
 }

@@ -529,20 +529,22 @@ MonoBehaviour:
   - {fileID: 17516846}
   - {fileID: 17516846}
   - {fileID: 17516846}
-  hurt01: {fileID: 8300000, guid: bba73763019e5a34789a64ee0a44bc87, type: 3}
-  hurt02: {fileID: 8300000, guid: ab7483b406b33214f91f0462a37a985c, type: 3}
-  hurt03: {fileID: 8300000, guid: b1560f8029acb0e4f874161f1a1160db, type: 3}
+  consumeSoulClip: {fileID: 8300000, guid: 8e87f74465ddff24db8b8b41496513ed, type: 3}
+  hurt01: {fileID: 8300000, guid: 9aafcf17fd8cb764bb3c29dae02eb486, type: 3}
+  hurt02: {fileID: 8300000, guid: efce763835bd9dc4f8d11f4ce87ad622, type: 3}
+  hurt03: {fileID: 8300000, guid: 79b81ba07889f9348be5a6dd880b6697, type: 3}
   zombie_attack1: {fileID: 8300000, guid: d9fea70c63779ae44959529d31b0aeec, type: 3}
   zombie_attack2: {fileID: 8300000, guid: b852616993cbac04c912ce9da5c6322c, type: 3}
   slash_miss01: {fileID: 8300000, guid: 3973cd81bebe2464eb98e283e5f76ae3, type: 3}
-  slash_miss02: {fileID: 8300000, guid: 92da71a1c78d12b43aa9d8847c16f18c, type: 3}
-  slash_miss03: {fileID: 8300000, guid: 7834b132192cc564298872ae844ae4b4, type: 3}
+  slash_miss02: {fileID: 8300000, guid: 617967c8dc8b2ed41848ab7c24429794, type: 3}
+  slash_miss03: {fileID: 8300000, guid: e537f6d506b0ce54683589770a4b490f, type: 3}
   jump: {fileID: 8300000, guid: 15dc2c420bdfea54385c09884416ee7a, type: 3}
-  run: {fileID: 8300000, guid: 076065fe3bf5906438ad44bbdf23e8db, type: 3}
-  die: {fileID: 8300000, guid: 7a86011fc4dcb5041989712995399648, type: 3}
+  run: {fileID: 8300000, guid: 6a4b3f7f81433144f85c3e3aefdcf42e, type: 3}
+  die: {fileID: 8300000, guid: f3a56d2182942ba4580af30720cca947, type: 3}
   pickup: {fileID: 8300000, guid: 89409c2e26a6aaf4fa1cbeafbd53dca5, type: 3}
   whisper: {fileID: 8300000, guid: 4db6453bf4aff4844a2178d61e7935f4, type: 3}
   warnText: {fileID: 1541895269}
+  healthMaxText: {fileID: 1681999485}
   lifesText: {fileID: 1595414715}
   rightSlash: {fileID: 1250253579}
   leftSlash: {fileID: 1617565265}
@@ -882,7 +884,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -42747,6 +42749,7 @@ RectTransform:
   - {fileID: 166469344}
   - {fileID: 182260610}
   - {fileID: 1541895268}
+  - {fileID: 1681999482}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61019,6 +61022,114 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &1681999481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1681999482}
+  - component: {fileID: 1681999486}
+  - component: {fileID: 1681999485}
+  - component: {fileID: 1681999484}
+  - component: {fileID: 1681999483}
+  m_Layer: 5
+  m_Name: HealtMaxText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1681999482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681999481}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1223450491}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000030517578, y: 67.69997}
+  m_SizeDelta: {x: 281.4, y: 31.1}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1681999483
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681999481}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4f47f69e7a0f2be4abc10b84cd367ab3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1681999484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681999481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
+--- !u!114 &1681999485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681999481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.14901961, g: 0.627451, b: 0.9058824, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 9a22af4b1e397ac40be674f3eccf6fbe, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &1681999486
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1681999481}
 --- !u!1 &1695148290
 GameObject:
   m_ObjectHideFlags: 0
