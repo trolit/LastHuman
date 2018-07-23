@@ -134,21 +134,18 @@ public class Player : Character
     // properties start with capital letter!!!
     private Vector2 startPos;
 
-    // to turn off particle systems
-    void OnAwake()
-    {
-        leftSlash.Stop();
-        rightSlash.Stop();
-    }
-
     // Use this for initialization
     public override void Start()
     {
+        leftSlash.Stop();
+        rightSlash.Stop();
+
         sounds = GetComponents<AudioSource>();
         audioSrc = sounds[0];
         footSrc = sounds[1];
         takehitSrc = sounds[2];
         whisperSrc = sounds[3];
+        consumeSoul = sounds[4];
 
         // call Start function from Character
         base.Start();
@@ -424,7 +421,7 @@ public class Player : Character
 
             FloatingTextController.CreateFloatingText(healthAmount.ToString(), transform);
         }
-        else if(GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue >= 0)
+        else if(GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue >= healthStat.MaxValue)
         {
             healthMaxText.text = "! ! YOU HAVE MAX HEALTH ! !";
             Invoke("HideHealthText", 1.5f);
@@ -432,7 +429,7 @@ public class Player : Character
         else if(GameManager.Instance.CollectedSouls <= 0)
         {
             warnText.text = "! ! NO SOUL TO CONSUME ! !";
-            Invoke("HideText", 1.5f);
+            Invoke("HideWarnText", 1.5f);
         }
     }
 
