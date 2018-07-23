@@ -23,9 +23,16 @@ public class FloatingTextController : MonoBehaviour
 
         if(Enemy.playertxtColor)
         {
-            Debug.Log("colorplayer");
+            // Debug.Log("colorplayer");
             text = string.Format("<color=cyan>{0}</color>", text);
             Enemy.playertxtColor = false;
+        }
+
+        if(Player.isHealing)
+        {
+            
+            text = string.Format("<color=#0df233>{0}</color>", text);
+            Player.isHealing = false;
         }
 
         FloatingText instance = Instantiate(popupText);

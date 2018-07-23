@@ -197,11 +197,11 @@ public class Enemy : Character
         int damage = Random.Range(5, 20);
         healthStat.CurrentValue -= damage;
 
-        playertxtColor = true;
-        FloatingTextController.CreateFloatingText(damage.ToString(), transform);
-
         if (!IsDead)
         {
+            playertxtColor = true;
+            FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+
             MyAnimator.SetTrigger("damage");
 
             int random = Random.Range(1, 4);

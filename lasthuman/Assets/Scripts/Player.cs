@@ -40,7 +40,7 @@ public class Player : Character
     public static bool HitEnemy = false;
 
     // liczba zyc
-    public static int life = 55;
+    public static int life = 3;
 
     // event that enemy can listen to...
     // whenever player dies , triggers this
@@ -53,6 +53,19 @@ public class Player : Character
     // Warning text when no souls
     [SerializeField]
     private Text warnText;
+
+    // access life text
+    [SerializeField]
+    private Text lifesText;
+
+    // bool healing 
+    public static bool isHealing = false;
+
+    [SerializeField]
+    private ParticleSystem rightSlash;
+
+    [SerializeField]
+    private ParticleSystem leftSlash;
 
     // player singleton
     public static Player Instance
@@ -114,6 +127,13 @@ public class Player : Character
     }
     // properties start with capital letter!!!
     private Vector2 startPos;
+
+    // to turn off particle systems
+    void OnAwake()
+    {
+        leftSlash.Stop();
+        rightSlash.Stop();
+    }
 
     // Use this for initialization
     public override void Start()
@@ -209,6 +229,14 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.F))
         {
             MyAnimator.SetTrigger("attack");
+            if(facingRight)
+            {
+                rightSlash.Play();
+            }
+            else if(!facingRight)
+            {
+                leftSlash.Play();
+            }
             int random = Random.Range(1, 3);
             if (random == 1) audioSrc.PlayOneShot(slash_miss01);
             else if (random == 2) audioSrc.PlayOneShot(slash_miss02);
@@ -285,13 +313,13 @@ public class Player : Character
             int damage = Random.Range(2, 19);
             healthStat.CurrentValue -= damage;
 
-            FloatingTextController.CreateFloatingText(damage.ToString(), transform);
-
             // Debug.Log("i got damage :(");
 
             // if we are not dead
             if (!IsDead)
             {
+                FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+
                 int random = Random.Range(1, 3);
                 if (random == 1) audioSrc.PlayOneShot(hurt01);
                 else if (random == 2) audioSrc.PlayOneShot(hurt02);
@@ -325,7 +353,13 @@ public class Player : Character
     public override void Death()
     {
         MyRigidbody.velocity = Vector2.zero;
-        life -= 1;
+        if(life > 0)
+        {
+            life -= 1;
+        }
+
+        lifesText.text = life.ToString();
+
         // go from death animation to idle..
         // we need to respawn
         if (life > 0)
@@ -363,19 +397,29 @@ public class Player : Character
 
         if(other.gameObject.tag == "Soul")
         {
-            Debug.Log("playing");
+            // Debug.Log("playing");
             whisperSrc.PlayOneShot(whisper);
         }
     }
 
     public void SpendSoul()
     {
-        if(GameManager.Instance.CollectedSouls > 0)
+        if(GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue < healthStat.MaxValue)
         {
+            isHealing = true;
+            int healthAmount = Random.Range(10, 15);
+
             GameManager.Instance.CollectedSouls--;
-            healthStat.CurrentValue += Random.Range(10,15);
+
+            healthStat.CurrentValue += healthAmount;
+
+            FloatingTextController.CreateFloatingText(healthAmount.ToString(), transform);
         }
-        else
+        else if(GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue >= 0)
+        {
+            // wyswietl tekst ze max zycia
+        }
+        else if(GameManager.Instance.CollectedSouls <= 0)
         {
             warnText.text = "! ! NO SOUL TO CONSUME ! !";
             Invoke("HideText", 1.5f);
