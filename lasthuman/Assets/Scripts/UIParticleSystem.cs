@@ -5,7 +5,6 @@ using System.Collections.Generic;
 [ExecuteInEditMode]
 [RequireComponent(typeof(CanvasRenderer))]
 [RequireComponent(typeof(ParticleSystem))]
-
 public class UIParticleSystem : MaskableGraphic
 {
 
@@ -46,6 +45,11 @@ public class UIParticleSystem : MaskableGraphic
         {
             _transform = transform;
         }
+
+        // prepare particle system
+        ParticleSystemRenderer renderer = GetComponent<ParticleSystemRenderer>();
+        bool setParticleSystemMaterial = false;
+
         if (_particleSystem == null)
         {
             _particleSystem = GetComponent<ParticleSystem>();
@@ -55,8 +59,7 @@ public class UIParticleSystem : MaskableGraphic
                 return false;
             }
 
-            // automatically set material to UI/Particles/Hidden shader, and get previous texture
-            ParticleSystemRenderer renderer = _particleSystem.GetComponent<ParticleSystemRenderer>();
+            // get current particle texture
             if (renderer == null)
             {
                 renderer = _particleSystem.gameObject.AddComponent<ParticleSystemRenderer>();
@@ -66,7 +69,31 @@ public class UIParticleSystem : MaskableGraphic
             {
                 particleTexture = currentMaterial.mainTexture;
             }
-            // Material material = new Material(Shader.Find("UI/Particles/Hidden")); // TODO - You should create this discard shader
+
+            // automatically set scaling
+            _particleSystem.scalingMode = ParticleSystemScalingMode.Local;
+
+            _particles = null;
+            setParticleSystemMaterial = true;
+        }
+        else
+        {
+            if (Application.isPlaying)
+            {
+                setParticleSystemMaterial = (renderer.material == null);
+            }
+#if UNITY_EDITOR
+            else
+            {
+                setParticleSystemMaterial = (renderer.sharedMaterial == null);
+            }
+#endif
+        }
+
+        // automatically set material to UI/Particles/Hidden shader, and get previous texture
+        if (setParticleSystemMaterial)
+        {
+            Material material = new Material(Shader.Find("UI/Particles/Hidden"));
             if (Application.isPlaying)
             {
                 renderer.material = material;
@@ -74,16 +101,13 @@ public class UIParticleSystem : MaskableGraphic
 #if UNITY_EDITOR
             else
             {
-                material.hideFlags = HideFlags.DontSave;
+                material.hideFlags = HideFlags.None;
                 renderer.sharedMaterial = material;
             }
 #endif
-
-            // automatically set scaling
-            _particleSystem.scalingMode = ParticleSystemScalingMode.Hierarchy;
-
-            _particles = null;
         }
+
+        // prepare particles array
         if (_particles == null)
         {
             _particles = new ParticleSystem.Particle[_particleSystem.maxParticles];

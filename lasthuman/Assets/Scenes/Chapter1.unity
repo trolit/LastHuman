@@ -5445,7 +5445,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   particleTexture: {fileID: 2800000, guid: e9d75249e1169e7429712d1f9e991157, type: 3}
-  particleSprite: {fileID: 0}
+  particleSprite: {fileID: 21300000, guid: e9d75249e1169e7429712d1f9e991157, type: 3}
 --- !u!222 &182260612
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5468,7 +5468,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a74dd2ff87d73164393a4c0b0a1dc747, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5579,7 +5579,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -28216,7 +28216,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   particleTexture: {fileID: 2800000, guid: e9d75249e1169e7429712d1f9e991157, type: 3}
-  particleSprite: {fileID: 0}
+  particleSprite: {fileID: 21300000, guid: e9d75249e1169e7429712d1f9e991157, type: 3}
 --- !u!222 &836360262
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28239,7 +28239,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a74dd2ff87d73164393a4c0b0a1dc747, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -28350,7 +28350,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -38787,7 +38787,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a74dd2ff87d73164393a4c0b0a1dc747, type: 2}
+  - {fileID: 0}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -38898,7 +38898,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 0
+  scalingMode: 1
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -43378,7 +43378,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   particleTexture: {fileID: 2800000, guid: e9d75249e1169e7429712d1f9e991157, type: 3}
-  particleSprite: {fileID: 0}
+  particleSprite: {fileID: 21300000, guid: e9d75249e1169e7429712d1f9e991157, type: 3}
 --- !u!222 &1049940379
 CanvasRenderer:
   m_ObjectHideFlags: 0
