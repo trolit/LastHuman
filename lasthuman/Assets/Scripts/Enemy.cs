@@ -29,6 +29,9 @@ public class Enemy : Character
     [SerializeField]
     private float MeleeRange;
 
+    // color damage manager
+    public static bool playertxtColor;
+
     public bool InMeleeRange
     {
         get
@@ -79,6 +82,8 @@ public class Enemy : Character
 
         // reference to Canvas so will be able to attach/detach Canvas which has enemy health bar
         healthCanvas = transform.GetComponentInChildren<Canvas>();
+
+        FloatingTextController.Initialize();
     }
 	
 	// Update is called once per frame
@@ -191,9 +196,11 @@ public class Enemy : Character
 
         int damage = Random.Range(5, 20);
         healthStat.CurrentValue -= damage;
-        // for now -10 damage , later maybe random?
-        
-        if(!IsDead)
+
+        playertxtColor = true;
+        FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+
+        if (!IsDead)
         {
             MyAnimator.SetTrigger("damage");
 

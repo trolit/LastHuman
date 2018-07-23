@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // delegate to pass an function
 // so we can create an event...
@@ -13,6 +14,7 @@ public class Player : Character
     public static AudioSource audioSrc;
     public static AudioSource footSrc;
     public static AudioSource takehitSrc;
+    public static AudioSource whisperSrc;
 
     public AudioClip hurt01;
     public AudioClip hurt02;
@@ -33,6 +35,8 @@ public class Player : Character
 
     public AudioClip pickup;
 
+    public AudioClip whisper;
+
     public static bool HitEnemy = false;
 
     // liczba zyc
@@ -45,6 +49,10 @@ public class Player : Character
 
     // variables start with small letter
     private static Player instance;
+
+    // Warning text when no souls
+    [SerializeField]
+    private Text warnText;
 
     // player singleton
     public static Player Instance
@@ -114,6 +122,7 @@ public class Player : Character
         audioSrc = sounds[0];
         footSrc = sounds[1];
         takehitSrc = sounds[2];
+        whisperSrc = sounds[3];
 
         // call Start function from Character
         base.Start();
@@ -208,6 +217,10 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.Space))
         {
             MyAnimator.SetTrigger("jump");
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            SpendSoul();
         }
     }
 
@@ -336,8 +349,41 @@ public class Player : Character
             // play pick up sound
             audioSrc.PlayOneShot(pickup);
 
+            // stop whispers sound effect
+            whisperSrc.Stop();
+
             // destroy a soul
             Destroy(other.gameObject);
         }
+    }
+
+    public override void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
+
+        if(other.gameObject.tag == "Soul")
+        {
+            Debug.Log("playing");
+            whisperSrc.PlayOneShot(whisper);
+        }
+    }
+
+    public void SpendSoul()
+    {
+        if(GameManager.Instance.CollectedSouls > 0)
+        {
+            GameManager.Instance.CollectedSouls--;
+            healthStat.CurrentValue += Random.Range(10,15);
+        }
+        else
+        {
+            warnText.text = "! ! NO SOUL TO CONSUME ! !";
+            Invoke("HideText", 1.5f);
+        }
+    }
+
+    private void HideText()
+    {
+        warnText.text = "";
     }
 }

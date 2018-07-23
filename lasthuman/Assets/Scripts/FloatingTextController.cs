@@ -20,6 +20,14 @@ public class FloatingTextController : MonoBehaviour
     public static void CreateFloatingText(string text, Transform location)
     {
         // reference to created object
+
+        if(Enemy.playertxtColor)
+        {
+            Debug.Log("colorplayer");
+            text = string.Format("<color=cyan>{0}</color>", text);
+            Enemy.playertxtColor = false;
+        }
+
         FloatingText instance = Instantiate(popupText);
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(new Vector2(location.position.x + Random.Range(-.5f, 5f), location.position.y + Random.Range(-.5f, 5f)));
