@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour {
 
+    // 
+    public GameObject settingMenu;
+    public GameObject pauseMenu;
+
     // dropdowns here
     public Dropdown resolutionDropdown;
     public Dropdown graphicsDropdown;

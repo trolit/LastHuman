@@ -18,7 +18,7 @@ się poruszyć.~~
 - ~~ruch wroga nie działa~~
 
 
-#### Warto zajrzeć(świetne poradniki z Unity):####
+#### 1. Warto zajrzeć(świetne poradniki z Unity): ####
 
 Brackeys:
 
@@ -31,3 +31,11 @@ InScopeStudios:
 Sykoo:
 
 > https://www.youtube.com/user/SykooTV/videos
+
+Gamegrind:
+
+> https://www.youtube.com/user/AwfulMedia/videos
+
+#### 2. Moja playlista z Unity na youtube ####
+
+> https://www.youtube.com/playlist?list=PLCrKXyV2OjXhXxZ24YTyMzNzunhyUa4pr
