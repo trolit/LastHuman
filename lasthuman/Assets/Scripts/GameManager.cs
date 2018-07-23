@@ -56,6 +56,17 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    [SerializeField]
+    private ParticleSystem bloodEffect;
+
+    public ParticleSystem BloodEffect
+    {
+        get
+        {
+            return bloodEffect;
+        }
+    }
+
     // Use this for initialization
     void Start () {
 		

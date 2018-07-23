@@ -355,6 +355,9 @@ public class Player : Character
 
     public override void Death()
     {
+        // play die sound
+        audioSrc.PlayOneShot(die);
+
         MyRigidbody.velocity = Vector2.zero;
         if(life > 0)
         {

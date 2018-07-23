@@ -204,6 +204,7 @@ public class Enemy : Character
 
             MyAnimator.SetTrigger("damage");
 
+            Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
             int random = Random.Range(1, 4);
             if (random == 1) audioZombie.PlayOneShot(slash_hit01);
             else if (random == 2) audioZombie.PlayOneShot(slash_hit02);
@@ -215,10 +216,13 @@ public class Enemy : Character
             audioZombie.PlayOneShot(zombie_die);
             MyAnimator.SetTrigger("die");
 
+            Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
+
             // spawns soul
             Instantiate(GameManager.Instance.SoulPrefab, new Vector3(transform.position.x, transform.position.y + 1.5f), Quaternion.identity);
             healthCanvas.enabled = false;
             DroppedCoin = true;
+
 
             yield return null;
         }
