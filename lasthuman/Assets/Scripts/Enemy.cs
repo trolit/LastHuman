@@ -204,7 +204,16 @@ public class Enemy : Character
 
             MyAnimator.SetTrigger("damage");
 
-            Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
+            if(!facingRight)
+            {
+                Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
+            }
+            else if(facingRight)
+            {
+                ParticleSystem bloodObject = Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
+                bloodObject.transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, 1);
+            }
+           
             int random = Random.Range(1, 4);
             if (random == 1) audioZombie.PlayOneShot(slash_hit01);
             else if (random == 2) audioZombie.PlayOneShot(slash_hit02);
@@ -213,10 +222,21 @@ public class Enemy : Character
         }
         else if(IsDead && !DroppedCoin)
         {
+            playertxtColor = true;
+            FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+
             audioZombie.PlayOneShot(zombie_die);
             MyAnimator.SetTrigger("die");
 
-            Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
+            if (!facingRight)
+            {
+                Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
+            }
+            else if (facingRight)
+            {
+                ParticleSystem bloodObject = Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
+                bloodObject.transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, 1);
+            }
 
             // spawns soul
             Instantiate(GameManager.Instance.SoulPrefab, new Vector3(transform.position.x, transform.position.y + 1.5f), Quaternion.identity);

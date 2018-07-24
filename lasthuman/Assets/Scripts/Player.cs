@@ -232,6 +232,8 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.F))
         {
             MyAnimator.SetTrigger("attack");
+
+            
             if(facingRight)
             {
                 rightSlash.Play();
@@ -240,6 +242,7 @@ public class Player : Character
             {
                 leftSlash.Play();
             }
+            
             int random = Random.Range(1, 3);
             if (random == 1) audioSrc.PlayOneShot(slash_miss01);
             else if (random == 2) audioSrc.PlayOneShot(slash_miss02);
@@ -344,6 +347,8 @@ public class Player : Character
             }
             else
             {
+                FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+
                 // set layer weight so if we die in the air 
                 // it doesnt play landing animation..
                 audioSrc.PlayOneShot(die);
