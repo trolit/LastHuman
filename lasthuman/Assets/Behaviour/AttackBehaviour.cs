@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class AttackBehaviour : StateMachineBehaviour {
 
-	 // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-	override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
-        animator.GetComponent <Character>().Attack = true;
+    // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
+
 
         // player doesnt need it but 
         // leave the line outside of if 
         // statement so enemy can use it
         animator.SetFloat("speed", 0);
 
-        if(animator.tag == "Player")
+        if (animator.tag == "Player")
         {
+
             if (Player.Instance.OnGround)
             {
                 Player.Instance.MyRigidbody.velocity = Vector2.zero;
@@ -23,16 +24,18 @@ public class AttackBehaviour : StateMachineBehaviour {
         }
 	}
 
-	// OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
-	//override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
-	//
-	//}
+    // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
+    //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
 
-	// OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //}
+
+    // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // when done attacking (now both for enemy and player)
         animator.GetComponent<Character>().Attack = false;
+
         // disable Sword Collider
         animator.GetComponent<Character>().SwordCollider.enabled = false;
         animator.ResetTrigger("attack");

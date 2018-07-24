@@ -32,6 +32,23 @@ public class Enemy : Character
     // color damage manager
     public static bool playertxtColor;
 
+
+    // variables start with small letter
+    private static Enemy instance;
+
+    // player singleton
+    public static Enemy Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = GameObject.FindObjectOfType<Enemy>();
+            }
+            return instance;
+        }
+    }
+
     public bool InMeleeRange
     {
         get
@@ -197,6 +214,12 @@ public class Enemy : Character
         int damage = Random.Range(5, 20);
         healthStat.CurrentValue -= damage;
 
+        // if attacked by player from back, turn around
+        if(Target == null)
+        {
+            ChangeDirection();
+        }
+
         if (!IsDead)
         {
             playertxtColor = true;
@@ -215,10 +238,10 @@ public class Enemy : Character
             }
 
             int random = Random.Range(1, 4);
-            if (random == 1) audioZombie.PlayOneShot(slash_hit01);
-            else if (random == 2) audioZombie.PlayOneShot(slash_hit02);
-            else if (random == 3) audioZombie.PlayOneShot(slash_hit03);
-            else if (random == 4) audioZombie.PlayOneShot(slash_hit04);
+            if (random == 1) audioZombie.PlayOneShot(Enemy.Instance.slash_hit01);
+            else if (random == 2) audioZombie.PlayOneShot(Enemy.Instance.slash_hit02);
+            else if (random == 3) audioZombie.PlayOneShot(Enemy.Instance.slash_hit03);
+            else if (random == 4) audioZombie.PlayOneShot(Enemy.Instance.slash_hit04);
         }
         else if (IsDead && !DroppedCoin)
         {

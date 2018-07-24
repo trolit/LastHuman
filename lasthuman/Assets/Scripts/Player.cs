@@ -9,6 +9,11 @@ public delegate void DeadEventHandler();
 
 public class Player : Character
 {
+    [SerializeField]
+    private Stat energy;
+
+    private static bool canAttack = true;
+
     // array of AudioSources
     public AudioSource[] sounds;
     public static AudioSource audioSrc;
@@ -134,9 +139,14 @@ public class Player : Character
     // properties start with capital letter!!!
     private Vector2 startPos;
 
+    // 
+    private float attackRate = 0.5f;
+    private float nextAttack;
+
     // Use this for initialization
     public override void Start()
     {
+
         leftSlash.Stop();
         rightSlash.Stop();
 
@@ -150,6 +160,8 @@ public class Player : Character
         // call Start function from Character
         base.Start();
 
+        energy.Initialize();
+
         MyRigidbody = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -159,6 +171,7 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
+
         if (!TakingDamage && !IsDead)
         {
             if (transform.position.y <= -40f)
@@ -229,10 +242,11 @@ public class Player : Character
 
     private void HandleInput()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && Time.time > nextAttack && energy.CurrentValue >= 10)
         {
+            energy.CurrentValue -= Random.Range(10, 30);
             MyAnimator.SetTrigger("attack");
-
+            nextAttack = Time.time + attackRate;
 
             if (facingRight)
             {
@@ -244,9 +258,10 @@ public class Player : Character
             }
 
             int random = Random.Range(1, 3);
-            if (random == 1) audioSrc.PlayOneShot(slash_miss01);
-            else if (random == 2) audioSrc.PlayOneShot(slash_miss02);
-            else if (random == 3) audioSrc.PlayOneShot(slash_miss03);
+            if (random == 1) audioSrc.PlayOneShot(Player.Instance.slash_miss01);
+            else if (random == 2) audioSrc.PlayOneShot(Player.Instance.slash_miss02);
+            else if (random == 3) audioSrc.PlayOneShot(Player.Instance.slash_miss03);
+
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -316,7 +331,7 @@ public class Player : Character
         if (!immortal)
         {
 
-            int damage = Random.Range(2, 19);
+            int damage = Random.Range(1, 29);
             healthStat.CurrentValue -= damage;
 
             // Debug.Log("i got damage :(");
