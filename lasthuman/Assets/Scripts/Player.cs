@@ -166,6 +166,30 @@ public class Player : Character
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         FloatingTextController.Initialize();
+
+        StartCoroutine(restoreEnergy());
+    }
+
+    IEnumerator restoreEnergy()
+    {
+        while (true)
+        { // loops forever...
+
+            if (energy.CurrentValue <= energy.MaxValue && (!Attack || TakingDamage))
+            { // if health < 100...
+                energy.CurrentValue += 1; // increase health and wait the specified time
+                yield return new WaitForSeconds(0.1f);
+            }
+            else if(!Attack && !TakingDamage && energy.CurrentValue <= energy.MaxValue)
+            {
+                energy.CurrentValue += 1; // increase health and wait the specified time
+                yield return new WaitForSeconds(0.01f);
+            }
+            else
+            { // if health >= 100, just yield 
+                yield return null;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -195,6 +219,7 @@ public class Player : Character
     void FixedUpdate()
     {
         // if we are not taking damage and we are not dead we can do things...
+
         if (!TakingDamage && !IsDead)
         {
             float horizontal = Input.GetAxis("Horizontal");
