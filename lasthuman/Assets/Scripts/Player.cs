@@ -233,16 +233,16 @@ public class Player : Character
         {
             MyAnimator.SetTrigger("attack");
 
-            
-            if(facingRight)
+
+            if (facingRight)
             {
                 rightSlash.Play();
             }
-            else if(!facingRight)
+            else if (!facingRight)
             {
                 leftSlash.Play();
             }
-            
+
             int random = Random.Range(1, 3);
             if (random == 1) audioSrc.PlayOneShot(slash_miss01);
             else if (random == 2) audioSrc.PlayOneShot(slash_miss02);
@@ -364,7 +364,7 @@ public class Player : Character
         audioSrc.PlayOneShot(die);
 
         MyRigidbody.velocity = Vector2.zero;
-        if(life > 0)
+        if (life > 0)
         {
             life -= 1;
         }
@@ -406,7 +406,7 @@ public class Player : Character
     {
         base.OnTriggerEnter2D(other);
 
-        if(other.gameObject.tag == "Soul")
+        if (other.gameObject.tag == "Soul")
         {
             // Debug.Log("playing");
             whisperSrc.PlayOneShot(whisper);
@@ -415,26 +415,26 @@ public class Player : Character
 
     public void SpendSoul()
     {
-        if(GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue < healthStat.MaxValue)
+        if (GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue < healthStat.MaxValue)
         {
             isHealing = true;
             int healthAmount = Random.Range(10, 15);
+
+            healthStat.CurrentValue += healthAmount;
+
+            FloatingTextController.CreateFloatingText(healthAmount.ToString(), transform);
 
             GameManager.Instance.CollectedSouls--;
 
             // play sound
             consumeSoul.PlayOneShot(consumeSoulClip);
-
-            healthStat.CurrentValue += healthAmount;
-
-            FloatingTextController.CreateFloatingText(healthAmount.ToString(), transform);
         }
-        else if(GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue >= healthStat.MaxValue)
+        else if (GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue >= healthStat.MaxValue)
         {
             healthMaxText.text = "! ! YOU HAVE MAX HEALTH ! !";
             Invoke("HideHealthText", 1.5f);
         }
-        else if(GameManager.Instance.CollectedSouls <= 0)
+        else if (GameManager.Instance.CollectedSouls <= 0)
         {
             warnText.text = "! ! NO SOUL TO CONSUME ! !";
             Invoke("HideWarnText", 1.5f);

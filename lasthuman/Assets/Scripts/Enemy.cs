@@ -68,7 +68,7 @@ public class Enemy : Character
     private Canvas healthCanvas;
 
     // Use this for initialization
-    public override void Start ()
+    public override void Start()
     {
         audioZombie = GetComponent<AudioSource>();
 
@@ -85,14 +85,14 @@ public class Enemy : Character
 
         FloatingTextController.Initialize();
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
         // if not dead
-        if(!IsDead)
+        if (!IsDead)
         {
-            if(!TakingDamage)
+            if (!TakingDamage)
             {
                 currentState.Execute();
             }
@@ -101,9 +101,9 @@ public class Enemy : Character
             LookAtTarget();
         }
 
-        
+
         // flip enemy bar
-        if(facingRight)
+        if (facingRight)
         {
             image.fillOrigin = 0;
         }
@@ -111,7 +111,7 @@ public class Enemy : Character
         {
             image.fillOrigin = 1;
         }
-	}
+    }
 
     public void RemoveTarget()
     {
@@ -125,10 +125,10 @@ public class Enemy : Character
     // keep an eye on player
     private void LookAtTarget()
     {
-        if(Target != null)
+        if (Target != null)
         {
             float xDir = Target.transform.position.x - transform.position.x;
-            if(xDir < 0 && facingRight || xDir > 0 && !facingRight)
+            if (xDir < 0 && facingRight || xDir > 0 && !facingRight)
             {
                 ChangeDirection();
             }
@@ -156,7 +156,7 @@ public class Enemy : Character
         if (!Attack)
         {
             // can move unless on the edge
-            if((GetDirection().x > 0 && transform.position.x < rightEdge.position.x) ||
+            if ((GetDirection().x > 0 && transform.position.x < rightEdge.position.x) ||
                 (GetDirection().x < 0 && transform.position.x > leftEdge.position.x))
             {
                 // to avoid sliding
@@ -167,7 +167,7 @@ public class Enemy : Character
             // if our current state is PatrolState
             // Change direction so we can move and
             // continue patrolling
-            else if(currentState is PatrolState)
+            else if (currentState is PatrolState)
             {
                 ChangeDirection();
             }
@@ -188,8 +188,8 @@ public class Enemy : Character
 
     public override IEnumerator TakeDamage()
     {
-        
-        if(!healthCanvas.isActiveAndEnabled && !IsDead)
+
+        if (!healthCanvas.isActiveAndEnabled && !IsDead)
         {
             healthCanvas.enabled = true;
         }
@@ -204,23 +204,23 @@ public class Enemy : Character
 
             MyAnimator.SetTrigger("damage");
 
-            if(!facingRight)
+            if (!facingRight)
             {
                 Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
             }
-            else if(facingRight)
+            else if (facingRight)
             {
                 ParticleSystem bloodObject = Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
                 bloodObject.transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, 1);
             }
-           
+
             int random = Random.Range(1, 4);
             if (random == 1) audioZombie.PlayOneShot(slash_hit01);
             else if (random == 2) audioZombie.PlayOneShot(slash_hit02);
             else if (random == 3) audioZombie.PlayOneShot(slash_hit03);
             else if (random == 4) audioZombie.PlayOneShot(slash_hit04);
         }
-        else if(IsDead && !DroppedCoin)
+        else if (IsDead && !DroppedCoin)
         {
             playertxtColor = true;
             FloatingTextController.CreateFloatingText(damage.ToString(), transform);

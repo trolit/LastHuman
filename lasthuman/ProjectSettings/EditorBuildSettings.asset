@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/LogoEntry.unity
     guid: 2a79d19f5ecd51149a688078974658e0
@@ -16,5 +19,5 @@ EditorBuildSettings:
     guid: 9a10b19d3dc59ed4a87112a6801c8d5b
   - enabled: 1
     path: Assets/Scenes/Chapter1.unity
-    guid: 00c6f564cb505d4488e2dd3a6c1f188b
+    guid: 2db62ee55babae548b9b96d0893febb3
   m_configObjects: {}

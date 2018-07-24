@@ -101,7 +101,7 @@ public class UIParticleSystem : MaskableGraphic
 #if UNITY_EDITOR
             else
             {
-                material.hideFlags = HideFlags.DontSave;
+                material.hideFlags = HideFlags.None;
                 renderer.sharedMaterial = material;
             }
 #endif
