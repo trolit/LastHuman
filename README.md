@@ -45,7 +45,6 @@ potępionych dusz. Bohater po zabiciu wrogów może zabierać ich dusze dzięki,
 #### 1. Świetne kanały na youtube z Unity: ####
 
 > [Brackeys](https://www.youtube.com/user/Brackeys/videos)
-InScopeStudios:
 
 > [InScopeStudios](https://www.youtube.com/user/KnnthRA/videos)
 
