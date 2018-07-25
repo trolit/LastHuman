@@ -177,12 +177,12 @@ public class Player : Character
             if (energy.CurrentValue <= energy.MaxValue && (Attack || TakingDamage))
             { // if health < 100...
                 energy.CurrentValue += 1; // increase health and wait the specified time
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.4f);
             }
             else if(energy.CurrentValue <= energy.MaxValue && !Attack && !TakingDamage)
             {
                 energy.CurrentValue += 1; // increase health and wait the specified time
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.05f);
             }
             else
             { // if health >= 100, just yield 
