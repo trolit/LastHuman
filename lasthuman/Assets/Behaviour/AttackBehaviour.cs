@@ -8,6 +8,7 @@ public class AttackBehaviour : StateMachineBehaviour {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
 
+        animator.GetComponent<Character>().Attack = true;
 
         // player doesnt need it but 
         // leave the line outside of if 

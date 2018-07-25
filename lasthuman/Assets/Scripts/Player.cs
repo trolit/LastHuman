@@ -12,8 +12,6 @@ public class Player : Character
     [SerializeField]
     private Stat energy;
 
-    private static bool canAttack = true;
-
     // array of AudioSources
     public AudioSource[] sounds;
     public static AudioSource audioSrc;
@@ -172,18 +170,19 @@ public class Player : Character
 
     IEnumerator restoreEnergy()
     {
+
         while (true)
         { // loops forever...
 
-            if (energy.CurrentValue <= energy.MaxValue && (!Attack || TakingDamage))
+            if (energy.CurrentValue <= energy.MaxValue && (Attack || TakingDamage))
             { // if health < 100...
                 energy.CurrentValue += 1; // increase health and wait the specified time
-                yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.5f);
             }
-            else if(!Attack && !TakingDamage && energy.CurrentValue <= energy.MaxValue)
+            else if(energy.CurrentValue <= energy.MaxValue && !Attack && !TakingDamage)
             {
                 energy.CurrentValue += 1; // increase health and wait the specified time
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.1f);
             }
             else
             { // if health >= 100, just yield 
@@ -195,7 +194,6 @@ public class Player : Character
     // Update is called once per frame
     void Update()
     {
-
         if (!TakingDamage && !IsDead)
         {
             if (transform.position.y <= -40f)
@@ -271,6 +269,7 @@ public class Player : Character
         {
             energy.CurrentValue -= Random.Range(10, 30);
             MyAnimator.SetTrigger("attack");
+
             nextAttack = Time.time + attackRate;
 
             if (facingRight)
