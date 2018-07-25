@@ -116,6 +116,9 @@ public class Player : Character
 
     private SpriteRenderer spriteRenderer;
 
+    [SerializeField]
+    private Canvas endgameCanvas;
+
     public override bool IsDead
     {
         get
@@ -144,6 +147,11 @@ public class Player : Character
     // Use this for initialization
     public override void Start()
     {
+        // reset values, hide death canvas
+        endgameCanvas.enabled = false;
+        life = 3;
+        IsDead = false;
+        Time.timeScale = 1f;
 
         leftSlash.Stop();
         rightSlash.Stop();
@@ -399,12 +407,11 @@ public class Player : Character
 
     public override void Death()
     {
-        // play die sound
-        audioSrc.PlayOneShot(die);
-
         MyRigidbody.velocity = Vector2.zero;
         if (life > 0)
         {
+            // play die sound
+            audioSrc.PlayOneShot(die);
             life -= 1;
         }
 
@@ -419,6 +426,11 @@ public class Player : Character
 
             // respawn the player in last position he was on ground - 10 
             transform.position = new Vector2(startPos.x - 10, startPos.y);
+        }
+        else if (life <= 0)
+        {
+            endgameCanvas.enabled = true;
+            // Time.timeScale = 0f;
         }
     }
 
