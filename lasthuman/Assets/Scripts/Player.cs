@@ -33,6 +33,8 @@ public class Player : Character
     public AudioClip slash_miss02;
     public AudioClip slash_miss03;
 
+    public AudioClip youdied;
+
     public AudioClip jump;
 
     public AudioClip run;
@@ -429,6 +431,8 @@ public class Player : Character
         }
         else if (life <= 0)
         {
+            audioSrc.PlayOneShot(youdied);
+            
             endgameCanvas.enabled = true;
             // Time.timeScale = 0f;
         }

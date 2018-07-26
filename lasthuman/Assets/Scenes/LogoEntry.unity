@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.04705906, g: 0, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.020617485, g: 0, b: 1, a: 1}
+  m_Color: {r: 0, g: 0.7249274, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -369,7 +369,6 @@ GameObject:
   - component: {fileID: 1410306609}
   - component: {fileID: 1410306608}
   - component: {fileID: 1410306612}
-  - component: {fileID: 1410306613}
   - component: {fileID: 1410306614}
   m_Layer: 0
   m_Name: Main Camera
@@ -456,29 +455,6 @@ MonoBehaviour:
   text1: {fileID: 189344426}
   text2: {fileID: 1306449981}
   loadlevel: LoadMenu
---- !u!114 &1410306613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1410306607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e318a6043c1cb4a8ce1c8805bab930, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resolution: 2
-  screenBlendMode: 0
-  sunTransform: {fileID: 1972006258}
-  radialBlurIterations: 3
-  sunColor: {r: 0.003921569, g: 0.28235295, b: 0.54509807, a: 1}
-  sunThreshold: {r: 0.48958018, g: 0.27661088, b: 0.5283019, a: 1}
-  sunShaftBlurRadius: 2.76
-  sunShaftIntensity: 7
-  maxRadius: 0.749
-  useDepthTexture: 1
-  sunShaftsShader: {fileID: 4800000, guid: d3b1c8c1036784176946f5cfbfb7fe4c, type: 3}
-  simpleClearShader: {fileID: 4800000, guid: f688f89ed5eb847c5b19c934a0f1e772, type: 3}
 --- !u!114 &1410306614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,10 +466,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4975a6e437fc3b149a8cd508ce5bdd69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threshold: 0.82
+  threshold: 0.715
   intensity: 2.5
-  blurSize: 4.92
-  blurIterations: 1
+  blurSize: 3.8
+  blurIterations: 4
   blurType: 0
   fastBloomShader: {fileID: 4800000, guid: 68a00c837b82e4c6d92e7da765dc5f1d, type: 3}
 --- !u!1 &1754904891
@@ -605,7 +581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.043137256, g: 0.14901961, b: 1, a: 1}
+  m_Color: {r: 0.0627451, g: 0.79215693, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
