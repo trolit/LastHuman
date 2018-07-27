@@ -249,7 +249,8 @@ public class Enemy : Character
         }
         else if (IsDead && !DroppedCoin)
         {
-            // place dead body on the ground
+            // place dead body on the ground correctly
+            // by changing its collider
             bodyCollider.size = new Vector2(1.37f, 3.0f);
 
             Time.timeScale = 0.5f;
