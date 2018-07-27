@@ -84,10 +84,14 @@ public class Enemy : Character
 
     private Canvas healthCanvas;
 
+    // to manipulate dead body
+    private BoxCollider2D bodyCollider;
+
     // Use this for initialization
     public override void Start()
     {
         audioZombie = GetComponent<AudioSource>();
+        bodyCollider = GetComponent<BoxCollider2D>();
 
         base.Start();
 
@@ -245,6 +249,9 @@ public class Enemy : Character
         }
         else if (IsDead && !DroppedCoin)
         {
+            // place dead body on the ground
+            bodyCollider.size = new Vector2(1.37f, 3.0f);
+
             Time.timeScale = 0.5f;
             Invoke("TurnOffSlowMotion", 0.5f);
 
@@ -263,6 +270,7 @@ public class Enemy : Character
                 ParticleSystem bloodObject = Instantiate(GameManager.Instance.BloodEffect, new Vector3(transform.position.x, transform.position.y), GameManager.Instance.BloodEffect.transform.rotation);
                 bloodObject.transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, 1);
             }
+
 
             // spawns soul
             Instantiate(GameManager.Instance.SoulPrefab, new Vector3(transform.position.x, transform.position.y + 1.5f), Quaternion.identity);
