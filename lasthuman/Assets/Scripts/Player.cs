@@ -238,7 +238,7 @@ public class Player : Character
             HandleLayers();
         }
 
-        if (OnGround)
+        if (OnGround && !Jump)
         {
             startPos = transform.position;
         }

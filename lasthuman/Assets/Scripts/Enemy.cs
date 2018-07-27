@@ -215,7 +215,7 @@ public class Enemy : Character
         healthStat.CurrentValue -= damage;
 
         // if attacked by player from back, turn around
-        if(Target == null)
+        if(Target == null && !IsDead)
         {
             ChangeDirection();
         }
@@ -245,6 +245,9 @@ public class Enemy : Character
         }
         else if (IsDead && !DroppedCoin)
         {
+            Time.timeScale = 0.5f;
+            Invoke("TurnOffSlowMotion", 0.5f);
+
             playertxtColor = true;
             FloatingTextController.CreateFloatingText(damage.ToString(), transform);
 
@@ -269,6 +272,11 @@ public class Enemy : Character
 
             yield return null;
         }
+    }
+
+    private void TurnOffSlowMotion()
+    {
+        Time.timeScale = 1.0f;
     }
 
     public override void Death()
