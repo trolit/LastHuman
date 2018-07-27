@@ -40,6 +40,10 @@ public class SettingsMenu : MonoBehaviour {
         int width_scr = PlayerPrefs.GetInt("width");
         int height_scr = PlayerPrefs.GetInt("height");
         int texture_quality = PlayerPrefs.GetInt("text_q");
+        int vsyncSwitch = PlayerPrefs.GetInt("vsync");
+
+        // set vsync
+        QualitySettings.vSyncCount = vsyncSwitch;
 
         // load screen resolution
         Screen.SetResolution(width_scr, height_scr, Screen.fullScreen);
@@ -98,7 +102,9 @@ public class SettingsMenu : MonoBehaviour {
         antialiasingDropdown.value = (int)QualitySettings.antiAliasing - 1;
         antialiasingDropdown.RefreshShownValue();
         textureQualityDropdown.value = (int)QualitySettings.masterTextureLimit;
+
         textureQualityDropdown.RefreshShownValue();
+        
         graphicsDropdown.RefreshShownValue();
         if(QualitySettings.vSyncCount > 0)
         {
@@ -197,8 +203,6 @@ public class SettingsMenu : MonoBehaviour {
         PlayerPrefs.SetInt("height", Screen.currentResolution.height);
         PlayerPrefs.SetInt("ant_a", QualitySettings.antiAliasing);
         PlayerPrefs.SetInt("text_q", QualitySettings.masterTextureLimit);
-
-        // will not probably save vsync parameter
-        // PlayerPrefs.SetInt("vsync", QualitySettings.vSyncCount);
+        PlayerPrefs.SetInt("vsync", QualitySettings.vSyncCount);
     }
 }
