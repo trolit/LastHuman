@@ -155,8 +155,11 @@ public class Player : Character
     private float attackRate = 0.5f;
     private float nextAttack;
 
-    // 
+    // performing supajump
     private bool superJump = false;
+
+    // firedSoul
+    public static bool firedSoul = false;
 
     // Use this for initialization
     public override void Start()
@@ -337,7 +340,6 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.R))
         {
             MyAnimator.SetTrigger("soulfire");
-            ThrowSoul(0);
         }
 
     }
@@ -543,15 +545,23 @@ public class Player : Character
 
     public void ThrowSoul(int value)
     {
-        if(facingRight)
+        if (OnGround && value == 0 && GameManager.Instance.CollectedSouls > 0)
         {
-            GameObject tmp = (GameObject)Instantiate(soulFireprefab, transform.position, Quaternion.identity);
-            tmp.GetComponent<SoulFire>().Initialize(Vector2.right);
-        }
-        else
-        {
-            GameObject tmp = (GameObject)Instantiate(soulFireprefabLeft, transform.position, transform.rotation);
-            tmp.GetComponent<SoulFire>().Initialize(Vector2.left);
+            // decrease souls amount
+            GameManager.Instance.CollectedSouls--;
+            energy.CurrentValue -= 100;
+            firedSoul = true;
+
+            if (facingRight)
+            {
+                GameObject tmp = (GameObject)Instantiate(soulFireprefab, transform.position, Quaternion.identity);
+                tmp.GetComponent<SoulFire>().Initialize(Vector2.right);
+            }
+            else
+            {
+                GameObject tmp = (GameObject)Instantiate(soulFireprefabLeft, transform.position, transform.rotation);
+                tmp.GetComponent<SoulFire>().Initialize(Vector2.left);
+            }
         }
     }
 }

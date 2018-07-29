@@ -217,8 +217,18 @@ public class Enemy : Character
             healthCanvas.enabled = true;
         }
 
-        int damage = Random.Range(5, 20);
-        healthStat.CurrentValue -= damage;
+        int damage;
+        if (Player.firedSoul)
+        {
+            damage = Random.Range(25, 60);
+            healthStat.CurrentValue -= damage;
+        }
+        else
+        {
+            damage = Random.Range(5, 20);
+            healthStat.CurrentValue -= damage;
+            playertxtColor = true;
+        }
 
         // if attacked by player from back, turn around
         if(Target == null && !IsDead)
@@ -228,7 +238,6 @@ public class Enemy : Character
 
         if (!IsDead)
         {
-            playertxtColor = true;
             FloatingTextController.CreateFloatingText(damage.ToString(), transform);
 
             MyAnimator.SetTrigger("damage");
@@ -266,6 +275,7 @@ public class Enemy : Character
             Invoke("TurnOffSlowMotion", 0.5f);
 
             playertxtColor = true;
+
             FloatingTextController.CreateFloatingText(damage.ToString(), transform);
 
             audioZombie.PlayOneShot(zombie_die);

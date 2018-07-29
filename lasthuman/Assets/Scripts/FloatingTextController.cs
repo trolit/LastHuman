@@ -20,6 +20,11 @@ public class FloatingTextController : MonoBehaviour
     public static void CreateFloatingText(string text, Transform location)
     {
         // reference to created object
+        if(Player.firedSoul)
+        {
+            text = string.Format("<color=red>{0}</color>", text);
+            Player.firedSoul = false;
+        }
 
         if(Enemy.playertxtColor)
         {

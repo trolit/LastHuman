@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Soul
   - Whisper
+  - soulFire
   layers:
   - Default
   - TransparentFX

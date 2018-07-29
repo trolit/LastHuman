@@ -39,6 +39,7 @@ public class AttackBehaviour : StateMachineBehaviour {
 
         // disable Sword Collider
         animator.GetComponent<Character>().SwordCollider.enabled = false;
+
         animator.ResetTrigger("attack");
 
         animator.ResetTrigger("soulfire");
