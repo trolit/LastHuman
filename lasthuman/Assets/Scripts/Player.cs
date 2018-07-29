@@ -78,6 +78,9 @@ public class Player : Character
     [SerializeField]
     private ParticleSystem leftSlash;
 
+    [SerializeField]
+    private ParticleSystem jumperAnim;
+
     // player singleton
     public static Player Instance
     {
@@ -105,6 +108,12 @@ public class Player : Character
 
     [SerializeField]
     private float JumpForce;
+
+    [SerializeField]
+    private GameObject soulFireprefab;
+
+    [SerializeField]
+    private GameObject soulFireprefabLeft;
 
     public Rigidbody2D MyRigidbody { get; set; }
 
@@ -146,6 +155,9 @@ public class Player : Character
     private float attackRate = 0.5f;
     private float nextAttack;
 
+    // 
+    private bool superJump = false;
+
     // Use this for initialization
     public override void Start()
     {
@@ -157,6 +169,7 @@ public class Player : Character
 
         leftSlash.Stop();
         rightSlash.Stop();
+        jumperAnim.Stop();
 
         sounds = GetComponents<AudioSource>();
         audioSrc = sounds[0];
@@ -238,7 +251,7 @@ public class Player : Character
             HandleLayers();
         }
 
-        if (OnGround && !Jump)
+        if (OnGround && !Jump && !superJump)
         {
             startPos = transform.position;
         }
@@ -264,7 +277,18 @@ public class Player : Character
             MyRigidbody.velocity = new Vector2(horizontal * movementSpeed, MyRigidbody.velocity.y);
         }
 
-        if (Jump && MyRigidbody.velocity.y == 0)
+        if (Jump && MyRigidbody.velocity.y == 0 && superJump)
+        {
+            if (energy.CurrentValue >= 48)
+            {
+                energy.CurrentValue -= 48;
+                jumperAnim.Play();
+                MyRigidbody.AddForce(new Vector2(0, JumpForce * 1.7f));
+                superJump = false;
+                audioSrc.PlayOneShot(jump);
+            }
+        }
+        else if (Jump && MyRigidbody.velocity.y == 0)
         {
             MyRigidbody.AddForce(new Vector2(0, JumpForce));
             audioSrc.PlayOneShot(jump);
@@ -305,6 +329,17 @@ public class Player : Character
         {
             SpendSoul();
         }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            MyAnimator.SetTrigger("jump");
+            superJump = true;
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            MyAnimator.SetTrigger("soulfire");
+            ThrowSoul(0);
+        }
+
     }
 
     private void Flip(float horizontal)
@@ -504,5 +539,19 @@ public class Player : Character
     private void HideHealthText()
     {
         healthMaxText.text = "";
+    }
+
+    public void ThrowSoul(int value)
+    {
+        if(facingRight)
+        {
+            GameObject tmp = (GameObject)Instantiate(soulFireprefab, transform.position, Quaternion.identity);
+            tmp.GetComponent<SoulFire>().Initialize(Vector2.right);
+        }
+        else
+        {
+            GameObject tmp = (GameObject)Instantiate(soulFireprefabLeft, transform.position, transform.rotation);
+            tmp.GetComponent<SoulFire>().Initialize(Vector2.left);
+        }
     }
 }

@@ -40,6 +40,8 @@ public class AttackBehaviour : StateMachineBehaviour {
         // disable Sword Collider
         animator.GetComponent<Character>().SwordCollider.enabled = false;
         animator.ResetTrigger("attack");
+
+        animator.ResetTrigger("soulfire");
     }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

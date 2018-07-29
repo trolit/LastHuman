@@ -205,11 +205,13 @@ public class Enemy : Character
     {
         base.OnTriggerEnter2D(other);
         currentState.OnTriggerEnter(other);
+
     }
+
+
 
     public override IEnumerator TakeDamage()
     {
-
         if (!healthCanvas.isActiveAndEnabled && !IsDead)
         {
             healthCanvas.enabled = true;
@@ -249,9 +251,16 @@ public class Enemy : Character
         }
         else if (IsDead && !DroppedCoin)
         {
-            // place dead body on the ground correctly
-            // by changing its collider
-            bodyCollider.size = new Vector2(1.37f, 3.0f);
+            if(gameObject.name == "CondemnedWarrior")
+            {
+                bodyCollider.size = new Vector2(1.37f, 11.22f);
+            }
+            else
+            {
+                // place dead body on the ground correctly
+                // by changing its collider
+                bodyCollider.size = new Vector2(1.37f, 3.0f);
+            }
 
             Time.timeScale = 0.5f;
             Invoke("TurnOffSlowMotion", 0.5f);
