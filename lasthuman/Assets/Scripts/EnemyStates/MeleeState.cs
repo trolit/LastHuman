@@ -6,7 +6,7 @@ public class MeleeState : IEnemyState
 {
     private float attackTimer;
     // how long till the next attack
-    private float attackCooldown = 3;
+    private float attackCooldown = 4;
     private bool canAttack = true;
     
     // reference to enemy
@@ -55,7 +55,7 @@ public class MeleeState : IEnemyState
             attackTimer = 0;
         }
 
-        // if cant attack is true perform animation and set can attack to false
+        // if can attack is true perform animation and set can attack to false
         if (canAttack)
         {
             canAttack = false;

@@ -77,6 +77,12 @@ public class Player : Character
     public static bool isHealing = false;
 
     [SerializeField]
+    private ParticleSystem defendLeft;
+
+    [SerializeField]
+    private ParticleSystem defendRight;
+
+    [SerializeField]
     private ParticleSystem rightSlash;
 
     [SerializeField]
@@ -179,6 +185,8 @@ public class Player : Character
         leftSlash.Stop();
         rightSlash.Stop();
         jumperAnim.Stop();
+        defendRight.Stop();
+        defendLeft.Stop();
 
         sounds = GetComponents<AudioSource>();
         audioSrc = sounds[0];
@@ -237,6 +245,8 @@ public class Player : Character
 
         if (!Input.GetKey(KeyCode.C))
         {
+            defendRight.Stop();
+            defendLeft.Stop();
             MyAnimator.SetBool("isdefending", false);
         }
                 // handle footstep sound effect
@@ -370,11 +380,19 @@ public class Player : Character
                 Invoke("HideWarnText", 1.5f);
             }
         }
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             if(energy.CurrentValue > 1)
             {
+                if (facingRight) defendRight.Play();
+                else if (!facingRight) defendLeft.Play();
+
                 MyAnimator.SetBool("isdefending", true);
+            }
+            else
+            {
+                isDefending = false;
+                MyAnimator.SetBool("isdefending", false);
             }
 
         }
@@ -440,7 +458,7 @@ public class Player : Character
             int damage = 0;
             if (isDefending)
             {
-                // damage = Random.Range(1, 12);
+                damage = Random.Range(1, 3);
             }
             else if(!isDefending && !immortal)
             {

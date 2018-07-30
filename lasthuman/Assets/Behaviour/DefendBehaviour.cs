@@ -12,10 +12,14 @@ public class DefendBehaviour : StateMachineBehaviour {
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(Player.Instance.energy.CurrentValue > 0)
+        if(Player.Instance.energy.CurrentValue > 1)
         {
-            Player.Instance.energy.CurrentValue -= 0.5f;
+            Player.Instance.energy.CurrentValue -= 1f;
             Player.isDefending = true;
+        }
+        else
+        {
+            Player.isDefending = false;
         }
     }
 
