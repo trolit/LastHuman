@@ -1,7 +1,7 @@
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/title.jpg)
 
-#          Last Human 
-zdjęcie z wersji v0.11(obecnie v0.31)
+#          Last Human  #
+zdjęcie z wersji v0.11(obecnie v0.37)
 
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/mainmenu.png)
 
@@ -37,12 +37,25 @@ bohatera niestety nie stworze...
 
 ## Wstępny opis gry Last Human, która została zaprojektowana: ##
 Last Human to gra platformowa na silniku Unity w której wcielamy się w postać samuraja. Zadaniem naszego bohatera jest pozbawienie nieumarłych, trolli... 
-potępionych dusz. Bohater po zabiciu wrogów może zabierać ich dusze dzięki, którym może się wyleczyć i przetrwać trudne momenty...  
+potępionych dusz. Bohater po zabiciu wrogów może zabierać ich dusze dzięki, którym może się wyleczyć i przetrwać trudne momenty, albo może poświęcić dwie
+dusze aby wykonać potężny atak.
+
+#### Efekt ataku: ####
+![Error](https://github.com/trolit/LastHuman/blob/master/images/attackEf.gif)
+
+#### Efekt podczas obrony: ####
+![Error](https://github.com/trolit/LastHuman/blob/master/images/defendEf.gif)
+
+#### Efekty podczas walki: ####
+![Error](https://github.com/trolit/LastHuman/blob/master/images/fightEf.gif)
+
+#### Efekt uderzenia kosztem dusz: ####
+![Error](https://github.com/trolit/LastHuman/blob/master/images/soulfireAtEf.gif)
 
 
 
 
-#### 1. Świetne kanały na youtube z Unity: ####
+#### Świetne kanały na youtube z Unity: ####
 
 > [Brackeys](https://www.youtube.com/user/Brackeys/videos)
 
