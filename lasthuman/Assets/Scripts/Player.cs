@@ -176,6 +176,7 @@ public class Player : Character
     // Use this for initialization
     public override void Start()
     {
+        UnityEngine.Cursor.visible = false;
         // reset values, hide death canvas
         endgameCanvas.enabled = false;
         life = 3;

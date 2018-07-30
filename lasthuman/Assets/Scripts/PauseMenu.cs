@@ -21,6 +21,7 @@ public class PauseMenu : MonoBehaviour {
             else
             {
                 Pause();
+                UnityEngine.Cursor.visible = true;
             }
         }
 	}
@@ -30,6 +31,7 @@ public class PauseMenu : MonoBehaviour {
         PauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         gameisPaused = false;
+        UnityEngine.Cursor.visible = false;
     }
 
     void Pause()
