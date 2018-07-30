@@ -10,7 +10,7 @@ public delegate void DeadEventHandler();
 public class Player : Character
 {
     [SerializeField]
-    private Stat energy;
+    public Stat energy;
 
     // array of AudioSources
     public AudioSource[] sounds;
@@ -165,8 +165,7 @@ public class Player : Character
     // firedSoul
     public static bool firedSoul = false;
 
-    private bool zombieAttacked = false;
-    private bool knightAttacked = false;
+    public static bool isDefending = false;
 
     // Use this for initialization
     public override void Start()
@@ -236,7 +235,11 @@ public class Player : Character
             HandleInput();
         }
 
-        // handle footstep sound effect
+        if (!Input.GetKey(KeyCode.C))
+        {
+            MyAnimator.SetBool("isdefending", false);
+        }
+                // handle footstep sound effect
         if (!IsDead && OnGround && !Attack && (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)))
         {
             footSrc.UnPause();
@@ -367,8 +370,12 @@ public class Player : Character
                 Invoke("HideWarnText", 1.5f);
             }
         }
-        if (Input.GetButton("C"))
+        if (Input.GetKey(KeyCode.C))
         {
+            if(energy.CurrentValue > 1)
+            {
+                MyAnimator.SetBool("isdefending", true);
+            }
 
         }
     }
@@ -430,9 +437,16 @@ public class Player : Character
         // if we are not immortal
         if (!immortal)
         {
-
-            int damage = Random.Range(1, 29);
-            healthStat.CurrentValue -= damage;
+            int damage = 0;
+            if (isDefending)
+            {
+                // damage = Random.Range(1, 12);
+            }
+            else if(!isDefending && !immortal)
+            {
+                damage = Random.Range(1, 35);
+                healthStat.CurrentValue -= damage;
+            }
 
             // Debug.Log("i got damage :(");
 
@@ -441,23 +455,25 @@ public class Player : Character
             {
                 FloatingTextController.CreateFloatingText(damage.ToString(), transform);
 
-                int random = Random.Range(1, 3);
-                if (random == 1) audioSrc.PlayOneShot(hurt01);
-                else if (random == 2) audioSrc.PlayOneShot(hurt02);
-                else if (random == 3) audioSrc.PlayOneShot(hurt03);
-
-                random = Random.Range(1, 2);
+                int random = Random.Range(1, 2);
                 if (random == 1) takehitSrc.PlayOneShot(zombie_attack1);
                 else if (random == 2) takehitSrc.PlayOneShot(zombie_attack2);
 
-                MyAnimator.SetTrigger("damage");
-                immortal = true;
+                if(!isDefending)
+                {
+                    random = Random.Range(1, 3);
+                    if (random == 1) audioSrc.PlayOneShot(hurt01);
+                    else if (random == 2) audioSrc.PlayOneShot(hurt02);
+                    else if (random == 3) audioSrc.PlayOneShot(hurt03);
 
-                StartCoroutine(IndicateImmortal());
+                    MyAnimator.SetTrigger("damage");
+                    immortal = true;
+
+                    StartCoroutine(IndicateImmortal());
+                }
 
                 // wait immortalTime seconds...
                 yield return new WaitForSeconds(immortalTime);
-
                 immortal = false;
             }
             else
