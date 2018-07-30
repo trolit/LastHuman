@@ -45,6 +45,10 @@ public class Player : Character
 
     public AudioClip whisper;
 
+    public AudioClip powerJump;
+    public AudioClip soulThrow;
+
+
     public static bool HitEnemy = false;
 
     // liczba zyc
@@ -160,6 +164,9 @@ public class Player : Character
 
     // firedSoul
     public static bool firedSoul = false;
+
+    private bool zombieAttacked = false;
+    private bool knightAttacked = false;
 
     // Use this for initialization
     public override void Start()
@@ -282,14 +289,10 @@ public class Player : Character
 
         if (Jump && MyRigidbody.velocity.y == 0 && superJump)
         {
-            if (energy.CurrentValue >= 48)
-            {
-                energy.CurrentValue -= 48;
                 jumperAnim.Play();
                 MyRigidbody.AddForce(new Vector2(0, JumpForce * 1.7f));
                 superJump = false;
-                audioSrc.PlayOneShot(jump);
-            }
+                audioSrc.PlayOneShot(powerJump);
         }
         else if (Jump && MyRigidbody.velocity.y == 0)
         {
@@ -334,14 +337,40 @@ public class Player : Character
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            MyAnimator.SetTrigger("jump");
-            superJump = true;
+            if (energy.CurrentValue >= 48)
+            {
+                energy.CurrentValue -= 48;
+                MyAnimator.SetTrigger("jump");
+                superJump = true;
+            }
+            else if (energy.CurrentValue <= 47)
+            {
+                warnText.text = "! ! NOT ENOUGH ENERGY ! !";
+                Invoke("HideWarnText", 1.5f);
+            }
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
-            MyAnimator.SetTrigger("soulfire");
+            if(energy.CurrentValue >= 100 && GameManager.Instance.CollectedSouls > 1)
+            {
+                audioSrc.PlayOneShot(soulThrow);
+                MyAnimator.SetTrigger("soulfire");
+            }
+            else if(energy.CurrentValue <= 100)
+            {
+                warnText.text = "! ! NOT ENOUGH ENERGY ! !";
+                Invoke("HideWarnText", 1.5f);
+            }
+            else if(GameManager.Instance.CollectedSouls <= 1)
+            {
+                warnText.text = "! ! NOT ENOUGH SOULS(2 NEEDED) ! !";
+                Invoke("HideWarnText", 1.5f);
+            }
         }
+        if (Input.GetButton("C"))
+        {
 
+        }
     }
 
     private void Flip(float horizontal)
@@ -419,7 +448,7 @@ public class Player : Character
 
                 random = Random.Range(1, 2);
                 if (random == 1) takehitSrc.PlayOneShot(zombie_attack1);
-                else if (random == 2) takehitSrc.PlayOneShot(zombie_attack1);
+                else if (random == 2) takehitSrc.PlayOneShot(zombie_attack2);
 
                 MyAnimator.SetTrigger("damage");
                 immortal = true;
@@ -545,10 +574,10 @@ public class Player : Character
 
     public void ThrowSoul(int value)
     {
-        if (OnGround && value == 0 && GameManager.Instance.CollectedSouls > 0)
+        if (OnGround && value == 0 && energy.CurrentValue >= 100)
         {
             // decrease souls amount
-            GameManager.Instance.CollectedSouls--;
+            GameManager.Instance.CollectedSouls -= 2;
             energy.CurrentValue -= 100;
             firedSoul = true;
 
