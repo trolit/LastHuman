@@ -264,6 +264,10 @@ public class Enemy : Character
             {
                 bodyCollider.size = new Vector2(1.37f, 11.22f);
             }
+            else if(gameObject.name == "Troll1")
+            {
+                bodyCollider.size = new Vector2(1.37f, 4.39f);
+            }
             else
             {
                 // place dead body on the ground correctly
