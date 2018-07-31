@@ -48,8 +48,7 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 
 
 #### Dostepne akcje w grze(w wersji 0.39): ####
-![Error](https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.png)
-
+![Error](https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.PNG)
 
 ## Pokaz z projektu... ##
 
