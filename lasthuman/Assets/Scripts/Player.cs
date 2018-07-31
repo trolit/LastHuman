@@ -162,7 +162,7 @@ public class Player : Character
     private Vector2 startPos;
 
     // 
-    private float attackRate = 0.5f;
+    private float attackRate = 0.35f;
     private float nextAttack;
 
     // performing supajump
@@ -275,7 +275,8 @@ public class Player : Character
             HandleLayers();
         }
 
-        if (OnGround && !Jump && !superJump)
+        // save last position
+        if (OnGround && !Jump && !superJump && !Attack && !isDefending && !TakingDamage)
         {
             startPos = transform.position;
         }
@@ -351,7 +352,7 @@ public class Player : Character
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (energy.CurrentValue >= 48)
+            if (energy.CurrentValue >= 48 && !Jump && OnGround)
             {
                 energy.CurrentValue -= 48;
                 MyAnimator.SetTrigger("jump");
@@ -533,7 +534,7 @@ public class Player : Character
         else if (life <= 0)
         {
             audioSrc.PlayOneShot(youdied);
-            
+            UnityEngine.Cursor.visible = true;
             endgameCanvas.enabled = true;
             // Time.timeScale = 0f;
         }
