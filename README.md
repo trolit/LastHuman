@@ -52,34 +52,24 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 
 ## Pokaz z projektu... ##
 
-<details><summary>Efekt ataku:</summary>
-<p>
+#### Efekt ataku: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/slashEffect.gif)
-</p>
-</details>
 
-<details><summary>Efekt podczas obrony:</summary>
-<p>
+
+#### Efekt podczas obrony: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/defendEffect.gif)
-</p>
-</details>
 
-<details><summary>Efekty podczas walki:</summary>
-<p>
+
+#### Efekty podczas walki: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/fightEffects.gif)
-</p>
-</details>
 
-<details><summary>Efekt uderzenia kosztem dusz:</summary>
-<p>
+
+#### Efekt uderzenia kosztem dusz: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/soulFireEffect.gif)
-</p>
-</details>
 
-<details><summary>Efekt silnego skoku:</summary>
+
+#### Efekt silnego skoku: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/powerjumpEffect.gif)
-</details>
-
 
 
 
