@@ -47,6 +47,12 @@ dwie dusze aby wykonać potężny atak. Mechanika działania bohatera opiera si�
 wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków bohater wolniej odzyskuje kondycję.  
 
 
+#### Dostepne akcje w grze(w wersji 0.39): ####
+![Error](https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.png)
+
+
+## Pokaz z projektu... ##
+
 #### Efekt ataku: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/attackEf.gif)
 
@@ -61,8 +67,6 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 
 #### Efekt uderzenia kosztem dusz: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/soulfireAtEf.gif)
-
-
 
 
 
