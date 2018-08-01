@@ -350,6 +350,10 @@ public class Enemy : Character
             playedEffect = true;
             Invoke("Attackeffect_cooldown", 0.5f);
         }
+        else if(gameObject.name == "Troll1")
+        {
+            // put troll sound effects here
+        }
     }
 
     private void Attackeffect_cooldown()
