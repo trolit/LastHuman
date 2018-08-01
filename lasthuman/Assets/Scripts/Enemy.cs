@@ -20,11 +20,8 @@ public class Enemy : Character
     static AudioSource audioZombie;
     static AudioSource meleeSounds;
 
-    public AudioClip zombie_attack01;
-    public AudioClip zombie_attack02;
-
-    public AudioClip warrior_attack01;
-    public AudioClip warrior_attack02;
+    public AudioClip attack01;
+    public AudioClip attack02;
 
     // variable to watch state
     private IEnemyState currentState;
@@ -334,25 +331,13 @@ public class Enemy : Character
         base.MeleeAttack();
 
         int random;
-        if ((gameObject.name == "Zombie1" || gameObject.name == "Zombie2" || gameObject.name == "Zombie3") && !playedEffect)
+        if (!playedEffect)
         {
             random = Random.Range(1, 2);
-            if (random == 1) meleeSounds.PlayOneShot(zombie_attack01);
-            else if (random == 2) meleeSounds.PlayOneShot(zombie_attack02);
+            if (random == 1) meleeSounds.PlayOneShot(attack01);
+            else if (random == 2) meleeSounds.PlayOneShot(attack02);
             playedEffect = true;
             Invoke("Attackeffect_cooldown", 0.5f);
-        }
-        else if(gameObject.name == "CondemnedWarrior" && !playedEffect)
-        {
-            random = Random.Range(1, 2);
-            if (random == 1) meleeSounds.PlayOneShot(warrior_attack01);
-            else if (random == 2) meleeSounds.PlayOneShot(warrior_attack02);
-            playedEffect = true;
-            Invoke("Attackeffect_cooldown", 0.5f);
-        }
-        else if(gameObject.name == "Troll1")
-        {
-            // put troll sound effects here
         }
     }
 

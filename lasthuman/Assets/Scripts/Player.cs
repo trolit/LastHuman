@@ -393,7 +393,6 @@ public class Player : Character
                 isDefending = false;
                 MyAnimator.SetBool("isdefending", false);
             }
-
         }
     }
 
