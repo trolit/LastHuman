@@ -26,9 +26,6 @@ public class Player : Character
     public AudioClip hurt02;
     public AudioClip hurt03;
 
-    public AudioClip zombie_attack1;
-    public AudioClip zombie_attack2;
-
     public AudioClip slash_miss01;
     public AudioClip slash_miss02;
     public AudioClip slash_miss03;
@@ -475,13 +472,9 @@ public class Player : Character
             {
                 FloatingTextController.CreateFloatingText(damage.ToString(), transform);
 
-                int random = Random.Range(1, 2);
-                if (random == 1) takehitSrc.PlayOneShot(zombie_attack1);
-                else if (random == 2) takehitSrc.PlayOneShot(zombie_attack2);
-
-                if(!isDefending)
+                if (!isDefending)
                 {
-                    random = Random.Range(1, 3);
+                    int random = Random.Range(1, 3);
                     if (random == 1) audioSrc.PlayOneShot(hurt01);
                     else if (random == 2) audioSrc.PlayOneShot(hurt02);
                     else if (random == 3) audioSrc.PlayOneShot(hurt03);

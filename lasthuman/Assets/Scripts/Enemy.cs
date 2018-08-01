@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy : Character
 {
+    public AudioSource[] sounds;
+
     private bool DroppedCoin = false;
 
     // sound effects:
@@ -16,6 +18,13 @@ public class Enemy : Character
     public AudioClip zombie_die;
 
     static AudioSource audioZombie;
+    static AudioSource meleeSounds;
+
+    public AudioClip zombie_attack01;
+    public AudioClip zombie_attack02;
+
+    public AudioClip warrior_attack01;
+    public AudioClip warrior_attack02;
 
     // variable to watch state
     private IEnemyState currentState;
@@ -90,7 +99,10 @@ public class Enemy : Character
     // Use this for initialization
     public override void Start()
     {
-        audioZombie = GetComponent<AudioSource>();
+        sounds = GetComponents<AudioSource>();
+        audioZombie = sounds[0];
+        meleeSounds = sounds[1];
+
         bodyCollider = GetComponent<BoxCollider2D>();
 
         base.Start();
@@ -205,7 +217,6 @@ public class Enemy : Character
     {
         base.OnTriggerEnter2D(other);
         currentState.OnTriggerEnter(other);
-
     }
 
 
@@ -314,5 +325,35 @@ public class Enemy : Character
     public override void Death()
     {
         Destroy(gameObject);
+    }
+
+    private bool playedEffect = false;
+
+    public override void MeleeAttack()
+    {
+        base.MeleeAttack();
+
+        int random;
+        if ((gameObject.name == "Zombie1" || gameObject.name == "Zombie2" || gameObject.name == "Zombie3") && !playedEffect)
+        {
+            random = Random.Range(1, 2);
+            if (random == 1) meleeSounds.PlayOneShot(zombie_attack01);
+            else if (random == 2) meleeSounds.PlayOneShot(zombie_attack02);
+            playedEffect = true;
+            Invoke("Attackeffect_cooldown", 0.5f);
+        }
+        else if(gameObject.name == "CondemnedWarrior" && !playedEffect)
+        {
+            random = Random.Range(1, 2);
+            if (random == 1) meleeSounds.PlayOneShot(warrior_attack01);
+            else if (random == 2) meleeSounds.PlayOneShot(warrior_attack02);
+            playedEffect = true;
+            Invoke("Attackeffect_cooldown", 0.5f);
+        }
+    }
+
+    private void Attackeffect_cooldown()
+    {
+        playedEffect = false;
     }
 }

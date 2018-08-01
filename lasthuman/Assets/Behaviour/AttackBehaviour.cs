@@ -42,7 +42,11 @@ public class AttackBehaviour : StateMachineBehaviour {
 
         animator.ResetTrigger("attack");
 
-        animator.ResetTrigger("soulfire");
+        
+        if (animator.tag == "Player")
+        {
+            animator.ResetTrigger("soulfire");
+        }
     }
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

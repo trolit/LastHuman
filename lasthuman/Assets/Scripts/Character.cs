@@ -68,7 +68,7 @@ public abstract class Character : MonoBehaviour {
     public abstract IEnumerator TakeDamage();
     // Enemy and Player needs to implement this function
 
-    public void MeleeAttack()
+    public virtual void MeleeAttack()
     {
         // enable Sword Collider
         // then disable in Attack behaviour
