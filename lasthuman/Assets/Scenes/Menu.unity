@@ -1716,7 +1716,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level1finishedText: {fileID: 1479337110}
   level2Title: {fileID: 858879937}
-  level2Button: {fileID: 1385604476}
+  level2Button: {fileID: 1437923007}
 --- !u!1 &502164411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2666,7 +2666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &858879936
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13089,7 +13089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1385604475
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13752,7 +13752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1479337109
 RectTransform:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class AccomplishLevelStatus : MonoBehaviour {
 
-    public static int finishedLevel1 = 0;
+    public static int finishedLevel1;
 
     [SerializeField]
     private Text level1finishedText;
@@ -13,18 +13,24 @@ public class AccomplishLevelStatus : MonoBehaviour {
     [SerializeField]
     private Text level2Title;
     [SerializeField]
-    private Button level2Button;
+    private GameObject level2Button;
 
 	// Use this for initialization
-	void onAwake ()
+	void Start ()
     {
-        int level1 = PlayerPrefs.GetInt("level1Finished"); 
+        int level1 = PlayerPrefs.GetInt("level1Finished");
 
         if (level1 == 1)
         {
             level1finishedText.enabled = true;
             level2Title.enabled = true;
-            level2Button.enabled = true;
+            level2Button.SetActive(true);
+        }
+        else if(level1 == 0)
+        {
+            level1finishedText.enabled = false;
+            level2Title.enabled = false;
+            level2Button.SetActive(false);
         }
 	}
 }
