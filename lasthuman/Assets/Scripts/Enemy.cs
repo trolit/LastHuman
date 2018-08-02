@@ -307,6 +307,7 @@ public class Enemy : Character
 
             if (task1_counter == 6)
             {
+                Player.completedQuests++;
                 task1_cross.text = "____________________________";
             }
 
@@ -320,6 +321,7 @@ public class Enemy : Character
 
                 if (task3_counter == 2)
                 {
+                    Player.completedQuests++;
                     task3_cross.text = "____________________________";
                 }
                 
@@ -335,6 +337,7 @@ public class Enemy : Character
 
                 if(task2_counter == 1)
                 {
+                    Player.completedQuests++;
                     task2_cross.text = "____________________________";
                 }
 

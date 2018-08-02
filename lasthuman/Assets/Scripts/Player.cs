@@ -138,6 +138,9 @@ public class Player : Character
     private Canvas endgameCanvas;
 
     [SerializeField]
+    private Canvas wingameCanvas;
+
+    [SerializeField]
     private Text task4_status;
     private int task4_counter = 0;
 
@@ -177,16 +180,20 @@ public class Player : Character
 
     public static bool isDefending = false;
 
+    public static int completedQuests;
+
     // Use this for initialization
     public override void Start()
     {
         // reset quests
         task4_counter = 0;
         task4_cross.text = "";
+        completedQuests = 0;
 
         UnityEngine.Cursor.visible = false;
         // reset values, hide death canvas
         endgameCanvas.enabled = false;
+        wingameCanvas.enabled = false;
         life = 3;
         IsDead = false;
         Time.timeScale = 1f;
@@ -266,6 +273,18 @@ public class Player : Character
         else
         {
             footSrc.Pause();
+        }
+
+        if(completedQuests == 4)
+        {
+            UnityEngine.Cursor.visible = true;
+
+            Time.timeScale = 0f;
+
+            // turn on wingame canvas
+            wingameCanvas.enabled = true;
+
+            // turn on win sound            
         }
     }
 
@@ -384,6 +403,7 @@ public class Player : Character
 
                 if (task4_counter == 1)
                 {
+                    Player.completedQuests++;
                     task4_cross.text = "____________________________";
                 }
 
