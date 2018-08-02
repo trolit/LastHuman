@@ -31,6 +31,7 @@ public class Player : Character
     public AudioClip slash_miss03;
 
     public AudioClip youdied;
+    public AudioClip youwon;
 
     public AudioClip jump;
 
@@ -180,7 +181,9 @@ public class Player : Character
 
     public static bool isDefending = false;
 
-    public static int completedQuests;
+    public static int completedQuests = 0;
+
+    private bool doneQuest = false;
 
     // Use this for initialization
     public override void Start()
@@ -197,6 +200,7 @@ public class Player : Character
         life = 3;
         IsDead = false;
         Time.timeScale = 1f;
+        doneQuest = false;
 
         leftSlash.Stop();
         rightSlash.Stop();
@@ -275,16 +279,18 @@ public class Player : Character
             footSrc.Pause();
         }
 
-        if(completedQuests == 4)
+        if(completedQuests >= 4)
         {
-            UnityEngine.Cursor.visible = true;
+            audioSrc.PlayOneShot(youwon);
 
-            Time.timeScale = 0f;
+            UnityEngine.Cursor.visible = true;
 
             // turn on wingame canvas
             wingameCanvas.enabled = true;
 
-            // turn on win sound            
+            AccomplishLevelStatus.finishedLevel1 = 1;
+
+            PlayerPrefs.SetInt("level1Finished", AccomplishLevelStatus.finishedLevel1);
         }
     }
 
@@ -401,10 +407,13 @@ public class Player : Character
                     task4_status.text = task4_counter + "/1";
                 }
 
-                if (task4_counter == 1)
+                if (task4_counter == 1 && !doneQuest)
                 {
-                    Player.completedQuests++;
+                    completedQuests++;
+
                     task4_cross.text = "____________________________";
+
+                    doneQuest = true;
                 }
 
                 audioSrc.PlayOneShot(soulThrow);

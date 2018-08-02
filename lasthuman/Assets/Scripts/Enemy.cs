@@ -112,6 +112,9 @@ public class Enemy : Character
     [SerializeField]
     private Text task3_cross;
 
+    private bool doneQuest1 = false;
+    private bool doneQuest2 = false;
+    private bool doneQuest3 = false;
 
     // Use this for initialization
     public override void Start()
@@ -123,6 +126,9 @@ public class Enemy : Character
         task1_cross.text = "";
         task2_cross.text = "";
         task3_cross.text = "";
+        doneQuest1 = false;
+        doneQuest2 = false;
+        doneQuest3 = false;
 
         sounds = GetComponents<AudioSource>();
         audioZombie = sounds[0];
@@ -261,7 +267,8 @@ public class Enemy : Character
         }
         else
         {
-            damage = Random.Range(5, 20);
+            // 5 - 20
+            damage = Random.Range(22, 40);
             healthStat.CurrentValue -= damage;
             playertxtColor = true;
         }
@@ -305,10 +312,11 @@ public class Enemy : Character
                 task1_status.text = task1_counter + "/6";
             }
 
-            if (task1_counter == 6)
+            if (task1_counter == 6 && !doneQuest1)
             {
                 Player.completedQuests++;
                 task1_cross.text = "____________________________";
+                doneQuest1 = true;
             }
 
             if (gameObject.name == "CondemnedWarrior" || gameObject.name == "CondemnedWarrior1")
@@ -319,10 +327,11 @@ public class Enemy : Character
                     task3_status.text = task3_counter + "/2";
                 }
 
-                if (task3_counter == 2)
+                if (task3_counter == 2 && !doneQuest3)
                 {
                     Player.completedQuests++;
                     task3_cross.text = "____________________________";
+                    doneQuest3 = true;
                 }
                 
                 bodyCollider.size = new Vector2(1.37f, 11.22f);
@@ -335,10 +344,11 @@ public class Enemy : Character
                     task2_status.text = task2_counter + "/1";
                 }
 
-                if(task2_counter == 1)
+                if(task2_counter == 1 && !doneQuest2)
                 {
                     Player.completedQuests++;
                     task2_cross.text = "____________________________";
+                    doneQuest2 = true;
                 }
 
                 bodyCollider.size = new Vector2(1.37f, 4.39f);
