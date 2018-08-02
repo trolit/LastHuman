@@ -103,7 +103,7 @@ public class Enemy : Character
 
     [SerializeField]
     private Text task3_status;
-    private int task3_counter = 0;
+    private static int task3_counter = 0;
 
     [SerializeField]
     private Text task1_cross;
@@ -296,6 +296,9 @@ public class Enemy : Character
         }
         else if (IsDead && !DroppedCoin)
         {
+            // if someone got killed increase one of the three global variables
+            SaveOverallKills();
+
             if (task1_counter < 6)
             {
                 task1_counter++;
@@ -307,7 +310,7 @@ public class Enemy : Character
                 task1_cross.text = "____________________________";
             }
 
-            if (gameObject.name == "CondemnedWarrior")
+            if (gameObject.name == "CondemnedWarrior" || gameObject.name == "CondemnedWarrior1")
             {
                 if (task3_counter < 2)
                 {
@@ -371,6 +374,25 @@ public class Enemy : Character
             DroppedCoin = true;
 
             yield return null;
+        }
+    }
+
+    private void SaveOverallKills()
+    {
+        if ((gameObject.name == "Zombie1" || gameObject.name == "Zombie2" || gameObject.name == "Zombie3" || gameObject.name == "Zombie4") && IsDead)
+        {
+            KillsSaver.zombiesKilled++;
+            PlayerPrefs.SetInt("zombieKill", KillsSaver.zombiesKilled);
+        }
+        else if((gameObject.name == "CondemnedWarrior" || gameObject.name == "CondemnedWarrior1") && IsDead)
+        {
+            KillsSaver.warriorsKilled++;
+            PlayerPrefs.SetInt("warriorKill", KillsSaver.warriorsKilled);
+        }
+        else if(gameObject.name == "Troll1" && IsDead)
+        {
+            KillsSaver.ogresKilled++;
+            PlayerPrefs.SetInt("ogreKill", KillsSaver.ogresKilled);
         }
     }
 
