@@ -137,6 +137,13 @@ public class Player : Character
     [SerializeField]
     private Canvas endgameCanvas;
 
+    [SerializeField]
+    private Text task4_status;
+    private int task4_counter = 0;
+
+    [SerializeField]
+    private Text task4_cross;
+
     public override bool IsDead
     {
         get
@@ -173,6 +180,10 @@ public class Player : Character
     // Use this for initialization
     public override void Start()
     {
+        // reset quests
+        task4_counter = 0;
+        task4_cross.text = "";
+
         UnityEngine.Cursor.visible = false;
         // reset values, hide death canvas
         endgameCanvas.enabled = false;
@@ -365,6 +376,17 @@ public class Player : Character
         {
             if(energy.CurrentValue >= 100 && GameManager.Instance.CollectedSouls > 1)
             {
+                if (task4_counter < 1)
+                {
+                    task4_counter++;
+                    task4_status.text = task4_counter + "/1";
+                }
+
+                if (task4_counter == 1)
+                {
+                    task4_cross.text = "____________________________";
+                }
+
                 audioSrc.PlayOneShot(soulThrow);
                 MyAnimator.SetTrigger("soulfire");
             }

@@ -93,9 +93,37 @@ public class Enemy : Character
     // to manipulate dead body
     private BoxCollider2D bodyCollider;
 
+    [SerializeField]
+    private Text task1_status;
+    private static int task1_counter = 0;
+
+    [SerializeField]
+    private Text task2_status;
+    private int task2_counter = 0;
+
+    [SerializeField]
+    private Text task3_status;
+    private int task3_counter = 0;
+
+    [SerializeField]
+    private Text task1_cross;
+    [SerializeField]
+    private Text task2_cross;
+    [SerializeField]
+    private Text task3_cross;
+
+
     // Use this for initialization
     public override void Start()
     {
+        // reset values
+        task1_counter = 0;
+        task2_counter = 0;
+        task3_counter = 0;
+        task1_cross.text = "";
+        task2_cross.text = "";
+        task3_cross.text = "";
+
         sounds = GetComponents<AudioSource>();
         audioZombie = sounds[0];
         meleeSounds = sounds[1];
@@ -268,12 +296,45 @@ public class Enemy : Character
         }
         else if (IsDead && !DroppedCoin)
         {
-            if(gameObject.name == "CondemnedWarrior")
+            if (task1_counter < 6)
             {
+                task1_counter++;
+                task1_status.text = task1_counter + "/6";
+            }
+
+            if (task1_counter == 6)
+            {
+                task1_cross.text = "____________________________";
+            }
+
+            if (gameObject.name == "CondemnedWarrior")
+            {
+                if (task3_counter < 2)
+                {
+                    task3_counter++;
+                    task3_status.text = task3_counter + "/2";
+                }
+
+                if (task3_counter == 2)
+                {
+                    task3_cross.text = "____________________________";
+                }
+                
                 bodyCollider.size = new Vector2(1.37f, 11.22f);
             }
             else if(gameObject.name == "Troll1")
             {
+                if(task2_counter < 1)
+                {
+                    task2_counter++;
+                    task2_status.text = task2_counter + "/1";
+                }
+
+                if(task2_counter == 1)
+                {
+                    task2_cross.text = "____________________________";
+                }
+
                 bodyCollider.size = new Vector2(1.37f, 4.39f);
             }
             else
@@ -308,7 +369,6 @@ public class Enemy : Character
             Instantiate(GameManager.Instance.SoulPrefab, new Vector3(transform.position.x, transform.position.y + 1.5f), Quaternion.identity);
             healthCanvas.enabled = false;
             DroppedCoin = true;
-
 
             yield return null;
         }
