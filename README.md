@@ -13,23 +13,15 @@ wersji v0.41(obecnie v0.41)
 ### Informacje o projekcie: ###
 
 <p align="left">
-Data założenia repozytorium: 11.07.18r.
-  
-(pomysł powstał wcześniej)
-
-Projekt wykonany w: Unity-2018.1.3f1(64-bit)
-
-Język programowania: C#
-
-Platforma: PC
-
-Waga zbudowanego/skompilowango projektu: ~1GB
-
-Waga projektu z repozytorium(rozpakowany): ~246MB
-
-Waga projektu z repozytorium(spakowany): ~233MB
-
-Gra wykorzystuje free "assety", które udało mi się znaleźć. 
+Data założenia repozytorium: 11.07.18r. <br/>
+(pomysł powstał wcześniej) <br/>
+Projekt wykonany w: Unity-2018.1.3f1(64-bit) <br/>
+Język programowania: C# <br/>
+Platforma: PC <br/>
+Waga zbudowanego/skompilowango projektu: ~1GB </br>
+Waga projektu z repozytorium(rozpakowany): ~246MB </br>
+Waga projektu z repozytorium(spakowany): ~233MB </br>
+Gra wykorzystuje free "assety", które udało mi się znaleźć. </br>
 </p>
 
 <details><summary>Prawdziwa koncepcja gry na jaką wpadłem o tytule Last Human</summary>
