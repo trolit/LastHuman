@@ -264,13 +264,13 @@ public class Enemy : Character
         int damage;
         if (Player.firedSoul)
         {
-            damage = Random.Range(25, 60);
+            damage = Random.Range(20, 60);
             healthStat.CurrentValue -= damage;
         }
         else
         {
             // 5 - 20
-            damage = Random.Range(22, 40);
+            damage = Random.Range(15, 30);
             healthStat.CurrentValue -= damage;
             playertxtColor = true;
         }
@@ -429,15 +429,15 @@ public class Enemy : Character
 
         if(gameObject.name == "Zombie1" || gameObject.name == "Zombie2" || gameObject.name == "Zombie3" || gameObject.name == "Zombie4")
         {
-            damageDealt = Random.Range(1, 20);
+            damageDealt = Random.Range(5, 20);
         }
         else if(gameObject.name == "CondemnedWarrior" || gameObject.name == "CondemnedWarrior1")
         {
-            damageDealt = Random.Range(15, 35);
+            damageDealt = Random.Range(20, 35);
         }
         else if(gameObject.name == "Troll1")
         {
-            damageDealt = Random.Range(25, 50);
+            damageDealt = Random.Range(35, 70);
         }
 
         int random;

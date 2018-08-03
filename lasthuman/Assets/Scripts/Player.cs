@@ -522,10 +522,9 @@ public class Player : Character
         // if we are not immortal
         if (!immortal)
         {
-            int damage = 0;
             if (isDefending)
             {
-                // Enemy.damageDealt = Random.Range(1, 1);
+                Enemy.damageDealt = Random.Range(0, 1);
             }
             else if(!isDefending && !immortal)
             {
@@ -569,14 +568,17 @@ public class Player : Character
         }
     }
 
+    private bool lostlife = false;
+
     public override void Death()
     {
         MyRigidbody.velocity = Vector2.zero;
-        if (life > 0)
+        if (life > 0 && !lostlife)
         {
             // play die sound
             audioSrc.PlayOneShot(die);
             life -= 1;
+            lostlife = true;
         }
 
         lifesText.text = life.ToString();
@@ -589,7 +591,8 @@ public class Player : Character
             healthStat.CurrentValue = healthStat.MaxValue;
 
             // respawn the player in last position he was on ground - 10 
-            transform.position = new Vector2(startPos.x - 10, startPos.y);
+            transform.position = new Vector2(startPos.x, startPos.y);
+            lostlife = false;
         }
         else if (life <= 0)
         {
@@ -635,6 +638,17 @@ public class Player : Character
 
             textBox.text = "THE CREATURE YOU SEE OVER THERE IS HURT,\n SLAY IT AND FREE ITS CORRUPTED SOUL";
             textBox.enabled = true;
+
+            Invoke("HideText", 4.5f);
+        }
+
+        if (other.name == "triggerTutorial")
+        {
+            textParticle.Play();
+
+            textBox.text = "SAMURAI, DONT FORGET ABOUT THE MOVES\n YOU CAN USE(IF YOU DID, PRESS ESC)";
+            textBox.enabled = true;
+
             Invoke("HideText", 4.5f);
         }
     }
@@ -650,7 +664,7 @@ public class Player : Character
         if (GameManager.Instance.CollectedSouls > 0 && healthStat.CurrentValue < healthStat.MaxValue)
         {
             isHealing = true;
-            int healthAmount = Random.Range(10, 15);
+            int healthAmount = Random.Range(20, 40);
 
             healthStat.CurrentValue += healthAmount;
 
