@@ -10,11 +10,12 @@ wersji v0.41(obecnie v0.41)
 
 
 
-### Informacje o projekcie znajdziesz tutaj: ###
+### Informacje o projekcie: ###
 
 <p align="left">
-Wstępne informacje
-Data założenia repozytorium: 11.07.18r.(pomysł powstał wcześniej)
+Data założenia repozytorium: 11.07.18r.
+  
+(pomysł powstał wcześniej)
 
 Projekt wykonany w: Unity-2018.1.3f1(64-bit)
 
@@ -28,10 +29,7 @@ Waga projektu z repozytorium(rozpakowany): ~246MB
 
 Waga projektu z repozytorium(spakowany): ~233MB
 
-Gra wykorzystuje "assety", które udało mi się znaleźć. Niekoniecznie wszystkie mi przypadają do gustu 
-ale lepszych nie było... :(
-
-Do zrealizowania pomysłu korzystałem z pomocy osób, które zostały wymienione poniżej
+Gra wykorzystuje free "assety", które udało mi się znaleźć. 
 </p>
 
 <details><summary>Prawdziwa koncepcja gry na jaką wpadłem o tytule Last Human</summary>
