@@ -1,11 +1,11 @@
-![Error](https://github.com/trolit/LastHuman/blob/master/images/title.jpg)
+![Error](https://github.com/trolit/LastHuman/blob/master/images/title.png)
 
 #          Last Human  			#
 zdjęcie z wersji v0.41(obecnie v0.41)
 
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/mainmenu.png)
 
-### Informacje o projekcie: ###
+### Informacje o projekcie znajdziesz tutaj: ###
 <details><summary>Wstępne informacje</summary>
 <p>
 Data założenia repozytorium: 11.07.18r.(pomysł powstał wcześniej)
