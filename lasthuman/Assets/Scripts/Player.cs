@@ -89,6 +89,12 @@ public class Player : Character
     [SerializeField]
     private ParticleSystem jumperAnim;
 
+    [SerializeField]
+    private Text textBox;
+
+    [SerializeField]
+    private ParticleSystem textParticle;
+
     // player singleton
     public static Player Instance
     {
@@ -194,6 +200,11 @@ public class Player : Character
         task4_counter = 0;
         task4_cross.text = "";
         completedQuests = 0;
+
+        // turn off textBox
+        textBox.enabled = false;
+        textParticle.Stop();
+
 
         UnityEngine.Cursor.visible = false;
         // reset values, hide death canvas
@@ -618,6 +629,21 @@ public class Player : Character
             // Debug.Log("playing");
             whisperSrc.PlayOneShot(whisper);
         }
+
+        if (other.name == "triggerStart")
+        {
+            textParticle.Play();
+
+            textBox.text = "THE CREATURE YOU SEE OVER THERE IS HURT,\n SLAY IT AND FREE ITS CORRUPTED SOUL";
+            textBox.enabled = true;
+            Invoke("HideText", 4.5f);
+        }
+    }
+    
+    private void HideText()
+    {
+        textParticle.Stop();
+        textBox.enabled = false;
     }
 
     public void SpendSoul()
