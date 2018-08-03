@@ -19,7 +19,12 @@ public class KillsSaver : MonoBehaviour
 	// Use this for initialization
 	void Start ()
     {
-		warriorsKilled = PlayerPrefs.GetInt("warriorKill");
+        LoadData();
+    }
+
+    public void LoadData()
+    {
+        warriorsKilled = PlayerPrefs.GetInt("warriorKill");
         ogresKilled = PlayerPrefs.GetInt("ogreKill");
         zombiesKilled = PlayerPrefs.GetInt("zombieKill");
 

@@ -185,6 +185,8 @@ public class Player : Character
 
     private bool doneQuest = false;
 
+    private bool playedSound = false;
+
     // Use this for initialization
     public override void Start()
     {
@@ -281,7 +283,12 @@ public class Player : Character
 
         if(completedQuests >= 4)
         {
-            audioSrc.PlayOneShot(youwon);
+            if(!playedSound)
+            {
+                audioSrc.PlayOneShot(youwon);
+                playedSound = true;
+            }
+
 
             UnityEngine.Cursor.visible = true;
 
