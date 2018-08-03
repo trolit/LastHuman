@@ -1,30 +1,30 @@
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/title.jpg)
 
 #          Last Human  			#
-zdjęcie z wersji v0.11(obecnie v0.37)
+zdjęcie z wersji v0.11(obecnie v0.40)
 
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/mainmenu.png)
 
+<details><summary>Wstępne informacje</summary>
+<p>
+Data założenia repozytorium: 11.07.18r.(pomysł powstał wcześniej)
 
-## Wstępne informacje: ##
-Data założenia repozytorium: __11.07.18r. (pomysł powstał wcześniej)__
+Projekt wykonany w: Unity-2018.1.3f1(64-bit)
 
-Projekt wykonany w: __Unity 2018.1.3f1 (64-bit)__
+Język programowania: C#
 
-Język programowania: __C#__
-
-Platforma: __PC__
+Platforma: PC
 
 Gra wykorzystuje "assety", które udało mi się znaleźć. Niekoniecznie wszystkie mi przypadają do gustu 
 ale lepszych nie było... :(
 
 Do zrealizowania pomysłu korzystałem z pomocy osób, które zostały wymienione poniżej
+</p>
+</details>
 
-
-
-
-## Prawdziwa koncepcja gry na jaką wpadłem o tytule Last Human: ##
-__LAST HUMAN__ - "Ostatni człowiek" - bohater, którym sterujemy jest odziany w czarny płaszcz, kapelusz i ma do dyspozycji tylko
+<details><summary>Prawdziwa koncepcja gry na jaką wpadłem o tytule Last Human</summary>
+<p>
+LAST HUMAN - "Ostatni człowiek" - bohater, którym sterujemy jest odziany w czarny płaszcz, kapelusz i ma do dyspozycji tylko
 krótki  nóż. Na początku jak i na końcu każdego poziomu bohater przedstawia nam swoje wspomnienia jak wyglądał świat przed biologiczną katastrofą.
 Musi pokonywać kolejne poziomy aby znaleźć miejsce w którym się schroni i w którym będą zapasy żywności aby przetrwać. Nie jest to proste. 
 Po drodze napotyka szereg utrudnień w postaci zniszczonych budynków, hord nieumarłych, a nawet bandytów - tak. Ktoś powie, że przecież tytuł brzmi
@@ -36,16 +36,18 @@ na siebie uwagę hordy nieumarłych, szybko się barykaduje jednak wie, że wkr�
 jedna kula. Nie chciał cierpieć. Zastrzelił się, ewentualnie można decyzję oddać graczowi - czy zastrzelić się, czy walczyć i zrobić dwa zakończenia.
 Motyw gry jest mroczny, całość gry w ciemnych barwach, <<smutna muzyka>>, gra świateł w budynkach.. Z racji, że moje rysowanie jest kiepskie to takiego 
 bohatera niestety nie stworze...
- 
- 
+</p>
+</details>
 
-
-## Wstępny opis gry Last Human, która została zaprojektowana: ##
+<details><summary>Wstępny opis gry Last Human, która została zaprojektowana</summary>
+<p>
 Last Human to gra platformowa na silniku Unity w której wcielamy się w postać samuraja. Zadaniem naszego bohatera jest "uwolnienie" nieumarłych, trolli i pozostałych
 kreatur od ich dusz. Bohater po zabiciu wrogów może zabierać ich dusze dzięki, którym może się wyleczyć i przetrwać trudne momenty, albo może poświęcić
 dwie dusze aby wykonać potężny atak. Mechanika działania bohatera opiera się w głównej mierze na "pasku energii". Dzięki energii bohater może atakować, wykonywać
 wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków bohater wolniej odzyskuje kondycję.  
-
+</p>
+</details>
+ 
 
 #### Dostepne akcje w grze(w wersji 0.39): ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.PNG)
@@ -70,8 +72,6 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 
 #### Efekt silnego skoku: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/powerjumpEffect.gif)
-
-
 
 
 
