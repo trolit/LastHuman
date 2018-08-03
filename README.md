@@ -3,16 +3,14 @@
 
 #          Last Human  			#
 ...platformowa gra dwuwymiarowa wykonana 
-na silniku Unity. Poniższe zdjęcie z
+na silniku Unity. Zdjęcie menu z
 wersji v0.41(obecnie v0.41)
 
 <img align="right" src="https://github.com/trolit/LastHuman/blob/master/images/mainmenu.png" width="490">
 
 
-
-### Informacje o projekcie: ###
-
 <p align="left">
+<b>Informacje o projekcie:</b></br>
 Data założenia repozytorium: 11.07.18r. <br/>
 (pomysł powstał wcześniej) <br/>
 Projekt wykonany w: Unity-2018.1.3f1(64-bit) <br/>
@@ -24,6 +22,27 @@ Waga projektu z repozytorium(spakowany): ~233MB </br>
 Gra wykorzystuje free "assety", które udało mi się znaleźć. </br>
 </p>
 
+<p align="right">
+  <b>dostępne akcje:</b></br>
+</p>
+<img align="right" src="https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.PNG" height="250">
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
 <details><summary>Prawdziwa koncepcja gry na jaką wpadłem o tytule Last Human</summary>
 <p>
 LAST HUMAN - "Ostatni człowiek" - bohater, którym sterujemy jest odziany w czarny płaszcz, kapelusz i ma do dyspozycji tylko
@@ -50,10 +69,8 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 </p>
 </details>
 
-#### Dostepne akcje w grze(od wersji 0.39): ####
-![Error](https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.PNG)
-
-## Pokaz z projektu... ##
+<p align="left">
+Pokaz z projektu...
 
 #### Prezentacja w formie wideo(v0.40): [LINK](https://youtu.be/aM6dEtEPYnU) ####
 
