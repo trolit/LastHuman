@@ -27,17 +27,6 @@ Gra wykorzystuje free "assety", które udało mi się znaleźć. </br>
 </br>
 </br>
 </br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
-</br>
 <details><summary>Prawdziwa koncepcja gry na jaką wpadłem o tytule Last Human</summary>
 <p>
 LAST HUMAN - "Ostatni człowiek" - bohater, którym sterujemy jest odziany w czarny płaszcz, kapelusz i ma do dyspozycji tylko
@@ -64,8 +53,8 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 </p>
 </details>
 
-<p align="left">
-Pokaz z projektu...
+
+### Pokaz z projektu... ###
 
 #### Prezentacja w formie wideo(v0.40): [LINK](https://youtu.be/aM6dEtEPYnU) ####
 
