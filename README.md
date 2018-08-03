@@ -49,10 +49,13 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 </details>
  
 
-#### Dostepne akcje w grze(w wersji 0.39): ####
+#### Dostepne akcje w grze(od wersji 0.39): ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.PNG)
 
 ## Pokaz z projektu... ##
+
+#### Prezentacja w formie wideo(v0.40): [LINK](https://youtu.be/aM6dEtEPYnU) ####
+
 
 #### Efekt ataku: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/slashEffect.gif)
