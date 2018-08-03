@@ -7,6 +7,8 @@ public class Enemy : Character
 {
     public AudioSource[] sounds;
 
+    public static int damageDealt;
+
     private bool DroppedCoin = false;
 
     // sound effects:
@@ -424,6 +426,19 @@ public class Enemy : Character
     public override void MeleeAttack()
     {
         base.MeleeAttack();
+
+        if(gameObject.name == "Zombie1" || gameObject.name == "Zombie2" || gameObject.name == "Zombie3" || gameObject.name == "Zombie4")
+        {
+            damageDealt = Random.Range(1, 20);
+        }
+        else if(gameObject.name == "CondemnedWarrior" || gameObject.name == "CondemnedWarrior1")
+        {
+            damageDealt = Random.Range(15, 35);
+        }
+        else if(gameObject.name == "Troll1")
+        {
+            damageDealt = Random.Range(25, 50);
+        }
 
         int random;
         if (!playedEffect)

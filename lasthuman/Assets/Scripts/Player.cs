@@ -525,12 +525,11 @@ public class Player : Character
             int damage = 0;
             if (isDefending)
             {
-                damage = Random.Range(1, 3);
+                // Enemy.damageDealt = Random.Range(1, 1);
             }
             else if(!isDefending && !immortal)
             {
-                damage = Random.Range(1, 35);
-                healthStat.CurrentValue -= damage;
+                healthStat.CurrentValue -= Enemy.damageDealt;
             }
 
             // Debug.Log("i got damage :(");
@@ -538,7 +537,7 @@ public class Player : Character
             // if we are not dead
             if (!IsDead)
             {
-                FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+                FloatingTextController.CreateFloatingText(Enemy.damageDealt.ToString(), transform);
 
                 if (!isDefending)
                 {
@@ -559,7 +558,7 @@ public class Player : Character
             }
             else
             {
-                FloatingTextController.CreateFloatingText(damage.ToString(), transform);
+                FloatingTextController.CreateFloatingText(Enemy.damageDealt.ToString(), transform);
 
                 // set layer weight so if we die in the air 
                 // it doesnt play landing animation..
