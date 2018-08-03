@@ -22,11 +22,6 @@ Waga projektu z repozytorium(spakowany): ~233MB </br>
 Gra wykorzystuje free "assety", które udało mi się znaleźć. </br>
 </p>
 
-<p align="right">
-  <b>dostępne akcje:</b></br>
-</p>
-<img align="right" src="https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.PNG" height="250">
-
 </br>
 </br>
 </br>
