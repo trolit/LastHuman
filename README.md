@@ -1,13 +1,19 @@
-![Error](https://github.com/trolit/LastHuman/blob/master/images/title.png)
+
+<img align="right" src="https://github.com/trolit/LastHuman/blob/master/images/title.png">
 
 #          Last Human  			#
-zdjęcie z wersji v0.41(obecnie v0.41)
+...platformowa gra dwuwymiarowa wykonana 
+na silniku Unity. Poniższe zdjęcie z
+wersji v0.41(obecnie v0.41)
 
-![Error](https://github.com/trolit/LastHuman/blob/master/images/mainmenu.png)
+<img align="right" src="https://github.com/trolit/LastHuman/blob/master/images/mainmenu.png" width="490">
+
+
 
 ### Informacje o projekcie znajdziesz tutaj: ###
-<details><summary>Wstępne informacje</summary>
-<p>
+
+<p align="left">
+Wstępne informacje
 Data założenia repozytorium: 11.07.18r.(pomysł powstał wcześniej)
 
 Projekt wykonany w: Unity-2018.1.3f1(64-bit)
@@ -27,7 +33,6 @@ ale lepszych nie było... :(
 
 Do zrealizowania pomysłu korzystałem z pomocy osób, które zostały wymienione poniżej
 </p>
-</details>
 
 <details><summary>Prawdziwa koncepcja gry na jaką wpadłem o tytule Last Human</summary>
 <p>
@@ -54,7 +59,6 @@ dwie dusze aby wykonać potężny atak. Mechanika działania bohatera opiera si�
 wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków bohater wolniej odzyskuje kondycję.  
 </p>
 </details>
- 
 
 #### Dostepne akcje w grze(od wersji 0.39): ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/actions_v0.39.PNG)
