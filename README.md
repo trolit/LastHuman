@@ -15,6 +15,12 @@ Język programowania: C#
 
 Platforma: PC
 
+Waga zbudowanego/skompilowango projektu: ~1GB
+
+Waga projektu z repozytorium(rozpakowany): ~246MB
+
+Waga projektu z repozytorium(spakowany): ~233MB
+
 Gra wykorzystuje "assety", które udało mi się znaleźć. Niekoniecznie wszystkie mi przypadają do gustu 
 ale lepszych nie było... :(
 
@@ -55,7 +61,6 @@ wysoki skok, potężny atak, bronić się. W czasie walki, wykonywania ataków b
 ## Pokaz z projektu... ##
 
 #### Prezentacja w formie wideo(v0.40): [LINK](https://youtu.be/aM6dEtEPYnU) ####
-
 
 #### Efekt ataku: ####
 ![Error](https://github.com/trolit/LastHuman/blob/master/images/slashEffect.gif)
