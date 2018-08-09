@@ -314,9 +314,7 @@ public class Player : Character
 
     void FixedUpdate()
     {
-
         // if we are not taking damage and we are not dead we can do things...
-
         if (!TakingDamage && !IsDead)
         {
             float horizontal = Input.GetAxis("Horizontal");
@@ -328,6 +326,7 @@ public class Player : Character
         }
 
         // save last position
+        // to fix
         if (OnGround)
         {
             startPos = transform.position;

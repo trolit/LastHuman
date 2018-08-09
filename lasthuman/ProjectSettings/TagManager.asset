@@ -12,6 +12,7 @@ TagManager:
   - Whisper
   - soulFire
   - wintag
+  - objectDamagetag
   layers:
   - Default
   - TransparentFX
