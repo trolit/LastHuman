@@ -269,7 +269,7 @@ public class Player : Character
     {
         if (!TakingDamage && !IsDead)
         {
-            if (transform.position.y <= -40f)
+            if (transform.position.y <= -70f)
             {
                 Death();
             }
@@ -314,6 +314,7 @@ public class Player : Character
 
     void FixedUpdate()
     {
+
         // if we are not taking damage and we are not dead we can do things...
 
         if (!TakingDamage && !IsDead)
@@ -327,7 +328,7 @@ public class Player : Character
         }
 
         // save last position
-        if (OnGround && !Jump && !superJump && !Attack && !isDefending && !TakingDamage)
+        if (OnGround)
         {
             startPos = transform.position;
         }
