@@ -335,8 +335,6 @@ public class Enemy : Character
                     task3_cross.text = "____________________________";
                     doneQuest3 = true;
                 }
-                
-                bodyCollider.size = new Vector2(1.37f, 11.22f);
             }
             else if(gameObject.name == "Troll1")
             {
